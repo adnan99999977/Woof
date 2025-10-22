@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "../context/JsonData";
 import Card from "./Card";
 import WinterTips from "./WintertTips";
+import VetCard from "./VetCard";
+import Vidio from "./Vidio";
 
 const CareServices = () => {
   const services = useContext(DataContext);
@@ -34,6 +36,8 @@ const CareServices = () => {
         </div>
       )}
       <WinterTips/>
+      <Vidio/>
+      <VetCard/>
     </div>
     
   );

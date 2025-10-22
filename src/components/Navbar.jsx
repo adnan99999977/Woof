@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="navbar mb-15 w-full flex items-center justify-between px-6 py-3 bg-white/50 backdrop-blur-sm shadow-md fixed top-0 z-50
+        className="navbar mb-15 w-full flex items-center justify-between px-9 py-3 bg-white/50 backdrop-blur-sm shadow-md fixed top-0 z-50
 "
       >
         <div className="navbar-start">
@@ -42,24 +42,36 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <img className="w-30" src="/assets/lg.png" alt="" />
+          <img
+            className="w-30 filter brightness-0 invert-1 sepia-1 hue-rotate-210"
+            src="/assets/lg.png"
+            alt=""
+          />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" flex gap-6 menu-horizontal px-1   text-lg">
             <li>
-              <NavLink className='hover:underline' to="/">Home</NavLink>
+              <NavLink className="hover:underline" to="/">
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink className='hover:underline' to="/services">Services</NavLink>
+              <NavLink className="hover:underline" to="/services">
+                Services
+              </NavLink>
             </li>
             <li>
-              <NavLink className='hover:underline' to="/profile">My Profile</NavLink>
+              <NavLink className="hover:underline" to="/profile">
+                My Profile
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
           <div className="px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline">
-            <Link to={'login'} className="">Log In </Link>
+            <Link to={"login"} className="">
+              Log In{" "}
+            </Link>
           </div>
         </div>
       </div>
