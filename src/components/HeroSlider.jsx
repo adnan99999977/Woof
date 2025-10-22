@@ -74,6 +74,7 @@ const HeroSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
     </div>
   );
 };

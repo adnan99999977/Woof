@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { DataContext } from "../context/JsonData";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import WinterTipsAnimated from "./WintertTips";
 import VetCard from "./VetCard";
@@ -8,11 +7,7 @@ import { motion } from "framer-motion";
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const cardVariants = {
@@ -22,17 +17,28 @@ const cardVariants = {
 };
 
 const CareServices = () => {
-  const { sharedData, isLoading } = useContext(DataContext); 
+  const [sharedData, setSharedData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
-  
-  if (isLoading || !sharedData || !Array.isArray(sharedData.services)) {
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setSharedData(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading || !sharedData) {
     return <p className="text-center py-10 text-lg">Loading...</p>;
   }
 
-
-  const services = sharedData.services;
-
+  const services = sharedData; // assuming sharedData is an array
   const displayedServices = showAll ? services : services.slice(0, 6);
 
   return (
@@ -67,7 +73,6 @@ const CareServices = () => {
         </div>
       )}
 
-     
       <WinterTipsAnimated />
       <Vidio />
       <VetCard />

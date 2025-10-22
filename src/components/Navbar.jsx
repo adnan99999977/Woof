@@ -43,7 +43,7 @@ const Navbar = () => {
             </ul>
           </div>
           <img
-            className="w-30 filter brightness-0 invert-1 sepia-1 hue-rotate-210"
+            className="w-40 filter brightness-0 invert-1 sepia-1 hue-rotate-210"
             src="/assets/lg.png"
             alt=""
           />

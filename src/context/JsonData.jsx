@@ -11,11 +11,11 @@ const JsonData = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         setSharedData(data);
-        setIsLoading(false); 
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
-        setIsLoading(false); 
+        setIsLoading(false);
       });
   }, []);
 
