@@ -46,7 +46,7 @@ const WinterTipsAnimated = () => {
             variants={cardVariant}
             whileHover="hover"
           >
-            {/* Sparkle effect */}
+        
             <motion.div
               className="absolute top-0 left-0 w-full h-full pointer-events-none"
               initial={{ opacity: 0 }}

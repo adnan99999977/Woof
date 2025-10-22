@@ -5,6 +5,8 @@ import MyProfile from "../pages/MyProfile";
 import Hero from "../components/Hero";
 import LogIn from "../pages/LogIn";
 import Register from "../pages/Register";
+import ServiceCard from "../components/ServiceCard";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
     element: <Services />,
   },
   {
+    path: "sevicecard",
+    element: <ServiceCard />,
+  },
+  {
     path: "profile",
     element: <MyProfile />,
   },
@@ -34,6 +40,10 @@ const router = createBrowserRouter([
     path: "register",
     element: <Register />,
   },
+  {
+    path: "*",
+    element: <ErrorPage/>
+  }
 ]);
 
 export default router;

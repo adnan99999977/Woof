@@ -3,7 +3,7 @@ import React from "react";
 export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
+  
       <video
         autoPlay
         loop
@@ -14,10 +14,9 @@ export default function HeroSection() {
         <source src="/assets/vidio.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay */}
+ 
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-2xl">
         <p className="uppercase tracking-widest text-sm mb-2 flex items-center justify-center gap-2">
            Get Started
@@ -26,8 +25,7 @@ export default function HeroSection() {
           Give Your Pet the Care They Deserve
         </h1>
         <p className="text-base md:text-lg mb-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-          tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+         Your pets bring love, joy, and comfort into your life — they deserve the best care in return. From healthy nutrition to regular checkups and lots of affection, every little effort helps them live a happier, healthier life.
         </p>
         <button className=" text-black btn hover:px-10 font-semibold py-3 px-8 rounded-full transition">
           Contact Us

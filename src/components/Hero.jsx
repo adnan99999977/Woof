@@ -27,19 +27,25 @@ const Hero = () => {
           <p className="text-2xl mb-4 text-gray-700 animate__animated animate__fadeInDown">
             Happy Pets, Happier You.
           </p>
-          <div className="flex  items-center justify-center"><h1 className="text-4xl md:text-7xl font-bold text-gray-700 drop-shadow-lg animate__animated animate__fadeInLeftBig">
-            Welcome to Woof's
-          </h1>
-           <img   className="w-30 animate__animated animate__fadeInRight" src="/assets/pow.png" alt="" /></div>
+          <div className="flex  items-center justify-center animate__animated animate__fadeInLeftBig">
+            <h1 className="text-4xl md:text-7xl font-bold text-gray-700 drop-shadow-lg ">
+              Welcome to Woof's
+            </h1>
+            <img
+              className="w-30 animate__animated animate__fadeInRight"
+              src="/assets/pow.png"
+              alt=""
+            />
+          </div>
           <p className="mt-6 w-9/12 mx-auto text-lg md:text-3xl animate__animated animate__fadeInUp  text-gray-700 drop-shadow-md">
             Your cozy winter companion for pets — crafted to keep your furry
             friends warm, safe, and oh-so-comfortable during the chilly months.
           </p>
         </div>
 
-     {/* Left Side Cards */}
+  
 <div className="absolute bottom-19 left-18 flex flex-col gap-8">
-  {/* Warm Jackets */}
+
   <div
     data-aos="fade-right"
     className="group relative bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 rounded-2xl w-72 h-44 flex flex-col justify-center items-center text-center 
@@ -69,9 +75,9 @@ const Hero = () => {
   </div>
 </div>
 
-{/* Right Side Cards */}
+
 <div className="absolute bottom-39 right-24 flex flex-col gap-8">
-  {/* Grooming */}
+
   <div
     data-aos="fade-left"
     className="group relative bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 rounded-2xl w-72 h-44 flex flex-col justify-center items-center text-center 
@@ -85,8 +91,7 @@ const Hero = () => {
     <p className="text-sm text-gray-700">Professional Grooming</p>
     <p className="text-sm text-gray-700">Cozy Boarding Spaces</p>
   </div>
-
-  {/* Vet Support */}
+  
   <div
     data-aos="fade-left"
     data-aos-delay="200"

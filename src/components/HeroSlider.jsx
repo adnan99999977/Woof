@@ -55,10 +55,10 @@ const HeroSlider = () => {
                 backgroundPosition: "center",
               }}
             >
-              {/* Dark overlay for text visibility */}
+              
               <div className="absolute inset-0 bg-black/40" />
 
-              {/* Text content */}
+          
               <div className="relative z-10 text-white px-6 md:px-12 max-w-2xl">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
                   {slide.title}

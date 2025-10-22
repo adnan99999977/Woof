@@ -67,13 +67,13 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <Link to={'login'} className="navbar-end">
           <div className="px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline">
-            <Link to={"login"} className="">
+            <p  className="">
               Log In{" "}
-            </Link>
+            </p>
           </div>
-        </div>
+        </Link>
       </div>
     </>
   );

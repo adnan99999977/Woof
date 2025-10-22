@@ -1,45 +1,77 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../context/JsonData";
 import Card from "./Card";
-import WinterTips from "./WintertTips";
+import WinterTipsAnimated from "./WintertTips";
 import VetCard from "./VetCard";
 import Vidio from "./Vidio";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeIn" } },
+  hover: { scale: 1.05, boxShadow: "0px 10px 25px rgba(0,0,0,0.15)" },
+};
 
 const CareServices = () => {
-  const services = useContext(DataContext);
+  const { sharedData, isLoading } = useContext(DataContext); 
   const [showAll, setShowAll] = useState(false);
 
   
+  if (isLoading || !sharedData || !Array.isArray(sharedData.services)) {
+    return <p className="text-center py-10 text-lg">Loading...</p>;
+  }
+
+
+  const services = sharedData.services;
+
   const displayedServices = showAll ? services : services.slice(0, 6);
 
   return (
     <div className="py-10">
-      <h2 className="text-4xl font-bold text-center mb-8 text-[#383634]">
+      <h2 className="text-4xl font-bold text-center mb-12 text-[#383634]">
         Our Care Services
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-10 lg:px-20">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 lg:px-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {displayedServices.map((service, index) => (
-          <Card key={index} service={service} />
+          <motion.div key={index} variants={cardVariants} whileHover="hover">
+            <Card service={service} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-     
       {services.length > 6 && (
-        <div className="flex justify-center mt-8">
-          <button
+        <div className="flex justify-center mt-10">
+          <motion.button
             className="btn btn-outline btn-primary px-8 py-2"
             onClick={() => setShowAll(!showAll)}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           >
             {showAll ? "Show Less" : "See All"}
-          </button>
+          </motion.button>
         </div>
       )}
-      <WinterTips/>
-      <Vidio/>
-      <VetCard/>
+
+     
+      <WinterTipsAnimated />
+      <Vidio />
+      <VetCard />
     </div>
-    
   );
 };
 
