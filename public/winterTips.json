@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Keep Your Pets Warm",
+    "description": "Provide cozy bedding and warm blankets for your pets during cold nights.",
+    "icon": "❄️"
+  },
+  {
+    "id": 2,
+    "title": "Limit Outdoor Time",
+    "description": "Avoid long outdoor walks when the temperature is very low to prevent hypothermia.",
+    "icon": "🐾"
+  },
+  {
+    "id": 3,
+    "title": "Check Paws Regularly",
+    "description": "Snow and ice can harm your pet’s paws; wipe and inspect them after walks.",
+    "icon": "🐾"
+  },
+  {
+    "id": 4,
+    "title": "Hydration is Key",
+    "description": "Even in winter, pets need fresh water to stay hydrated and healthy.",
+    "icon": "💧"
+  },
+  {
+    "id": 5,
+    "title": "Provide Proper Nutrition",
+    "description": "Consider slightly higher calorie diets for active pets to maintain body heat.",
+    "icon": "🍲"
+  },
+  {
+    "id": 6,
+    "title": "Groom Regularly",
+    "description": "Keep fur clean and untangled; it helps with insulation and warmth.",
+    "icon": "✂️"
+  }
+]
