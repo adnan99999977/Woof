@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../context/Authcontext/AuthContext";
 
 const Navbar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+  console.log(user);
+
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        
+      })
+      .catch((error) => {
+        console.log(error);
+        
+      });
+  };
+
   return (
     <>
       <div
@@ -67,13 +82,17 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to={'/login'} className="navbar-end">
-          <div className="px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline">
-            <p  className="">
-              Log In{" "}
+        <div className="navbar-end">
+          <div>
+            <p>
+              {user ? (
+                <a className="px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer" onClick={handleLogout}>Log Out</a>
+              ) : (
+                <Link className='px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer' to={"/login"}>Log In</Link>
+              )}
             </p>
           </div>
-        </Link>
+        </div>
       </div>
     </>
   );

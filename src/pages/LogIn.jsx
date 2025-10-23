@@ -111,7 +111,7 @@ const LogIn = () => {
                 <div className="flex items-center justify-center">
                   <Link to={"/register"}>
                     Are you a new user?{" "}
-                    <span className="font-semibold hover:underline cursor-pointer">
+                    <span className="font-semibold hover:underline cursor-pointer text-blue-600">
                       Register{" "}
                     </span>
                   </Link>
