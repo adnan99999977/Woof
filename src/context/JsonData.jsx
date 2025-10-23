@@ -15,12 +15,18 @@ const JsonData = ({ children }) => {
       })
       .catch((err) => {
         console.error(err);
-        setIsLoading(false);
       });
   }, []);
 
+  const serviceData = {
+    sharedData,
+    isLoading,
+    setIsLoading,
+  };
+  
+
   return (
-    <DataContext.Provider value={{ sharedData, isLoading, setIsLoading }}>
+    <DataContext.Provider value={serviceData}>
       {children}
     </DataContext.Provider>
   );

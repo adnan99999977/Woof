@@ -4,6 +4,7 @@ import WinterTipsAnimated from "./WintertTips";
 import VetCard from "./VetCard";
 import Vidio from "./Vidio";
 import { motion } from "framer-motion";
+import Loading from "./Loading";
 
 const containerVariants = {
   hidden: {},
@@ -35,7 +36,7 @@ const CareServices = () => {
   }, []);
 
   if (isLoading || !sharedData) {
-    return <p className="text-center py-10 text-lg">Loading...</p>;
+    return <Loading/>
   }
 
   const services = sharedData; 

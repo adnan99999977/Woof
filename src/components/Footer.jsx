@@ -1,9 +1,4 @@
-import React from "react";
 import { Link } from "react-router";
-
-// Footer component converted from your HTML + Tailwind
-// Usage: import Footer from './FooterComponent.jsx' and include <Footer /> in your layout
-
 export default function Footer() {
   const year = new Date().getFullYear();
 

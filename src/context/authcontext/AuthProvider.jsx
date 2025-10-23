@@ -10,7 +10,7 @@ import { auth } from "../../Firebase/firebase.config";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // 🔹 add loading state
+  const [loading, setLoading] = useState(true);
 
   const registerUser = (email, password) => {
     setLoading(true);
@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser || null);
-      setLoading(false); // 🔹 stop loading after checking
+      setLoading(false); 
     });
 
     return () => unsubscribe();

@@ -14,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
   },
   {
     path: "services",
-    element: <Services />,
+    element: (
+      <PrivetRoute>
+        <Services />
+      </PrivetRoute>
+    ),
   },
   {
     path: "servicecard",
@@ -41,7 +46,7 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "serviceDetails",
+    path: "serviceDetails/:id",
     element: (
       <PrivetRoute>
         <ServicesDetails />
@@ -55,11 +60,6 @@ const router = createBrowserRouter([
         <Profile />
       </PrivetRoute>
     ),
-  },
-
-  {
-    path: "*",
-    element: <ErrorPage />,
   },
 ]);
 

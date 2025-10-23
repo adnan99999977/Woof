@@ -59,7 +59,7 @@ const Hero = () => {
     <p className="text-sm text-gray-700">Fancy winter outfits</p>
   </div>
 
-  {/* Paw Care */}
+  
   <div
     data-aos="fade-right"
     data-aos-delay="200"
