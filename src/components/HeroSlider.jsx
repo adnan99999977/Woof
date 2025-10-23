@@ -31,6 +31,13 @@ const HeroSlider = () => {
       desc: "Stay safe, stylish, and warm with our winter pet care experts.",
       btn: "View Tips",
     },
+    {
+      id: 4,
+      image: "/assets/food.jpg",
+      title: "Healthy Winter Diet for Pets",
+      desc: "Ensure your pets stay nourished and energetic with our seasonal diet tips.",
+      btn: "View Tips",
+    }
   ];
 
   return (
@@ -41,7 +48,7 @@ const HeroSlider = () => {
         loop={true}
         pagination={{ clickable: true }}
         autoplay={{
-          delay: 2300,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         className="h-full"

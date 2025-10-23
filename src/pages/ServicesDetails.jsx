@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link, useParams } from "react-router";
@@ -6,14 +6,15 @@ import { motion } from "framer-motion";
 import { MdArrowBackIosNew } from "react-icons/md";
 import ScrollToTop from "../components/ScrollToTop";
 import { DataContext } from "../context/JsonData";
+import toast from "react-hot-toast";
 
 const ServicesDetails = () => {
   const { isLoading, sharedData } = useContext(DataContext);
   const { id } = useParams();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (isLoading) return <p>Loading...</p>;
 
-  // Find the service based on URL param
   const service = sharedData.find((data) => data.serviceId === Number(id));
 
   if (!service) return <p>Service not found</p>;
@@ -30,6 +31,52 @@ const ServicesDetails = () => {
     price,
     description,
   } = service;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const loadingToast = toast.loading("Booking... Please wait ", {
+      position: "top-center",
+      style: {
+        background: "#3b82f6",
+        color: "#fff",
+        padding: "12px 20px",
+        borderRadius: "10px",
+        fontWeight: "600",
+        fontSize: "16px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "8px",
+      },
+    });
+
+    setTimeout(() => {
+      toast.dismiss(loadingToast);
+
+      toast.success("Service Booked Successfully!", {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          background: "#22c55e",
+          color: "#fff",
+          padding: "12px 20px",
+          borderRadius: "10px",
+          fontWeight: "600",
+          fontSize: "16px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+        },
+      });
+
+      e.target.reset();
+      setIsSubmitting(false);
+    }, 2000);
+  };
 
   return (
     <>
@@ -58,7 +105,6 @@ const ServicesDetails = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
           >
-            {/* Left: Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -69,7 +115,7 @@ const ServicesDetails = () => {
                 <img
                   alt={serviceName}
                   src={image}
-                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-[300px] mx-auto lg:w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
@@ -79,14 +125,15 @@ const ServicesDetails = () => {
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="mt-4 bg-white/70 backdrop-blur-md border border-white/50 p-4 rounded-xl shadow-inner"
               >
-                <p className="text-sm text-gray-600">Service ID</p>
-                <p className="font-mono text-sm font-semibold text-gray-700">
+                <p className="text-sm text-gray-600 text-center lg:text-start">
+                  Service ID
+                </p>
+                <p className="font-mono text-center lg:text-start text-sm font-semibold text-gray-700">
                   #{serviceId}
                 </p>
               </motion.div>
             </motion.div>
 
-            {/* Right: Details + form */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -116,7 +163,7 @@ const ServicesDetails = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                   <div className="p-4 bg-blue-50/60 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                    <p className="text-md  text-gray-500">Provider</p>
+                    <p className="text-md text-gray-500">Provider</p>
                     <p className="font-semibold">{providerName}</p>
                     <a
                       href={`mailto:${providerEmail}`}
@@ -127,7 +174,9 @@ const ServicesDetails = () => {
                   </div>
 
                   <div className="p-4 bg-blue-50/60 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                    <p className="text-md pb-3 text-gray-500">Slots Available</p>
+                    <p className="text-md pb-3 text-gray-500">
+                      Slots Available
+                    </p>
                     <p className="font-semibold">{slotsAvailable}</p>
                   </div>
 
@@ -139,7 +188,6 @@ const ServicesDetails = () => {
                   </div>
                 </div>
 
-                {/* Book Service form */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -147,38 +195,34 @@ const ServicesDetails = () => {
                   className="mt-4 border-t border-gray-200 pt-6"
                 >
                   <h2 className="text-2xl font-semibold mb-3">Book Service:</h2>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      alert("Booking successful!");
-                      e.target.reset();
-                    }}
-                  >
-                    <div className="flex gap-4">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
                       <input
                         name="name"
                         placeholder="Your name"
-                        className="p-3 w-[40%] rounded-lg border border-gray-300 col-span-2 focus:ring-2 focus:ring-blue-400 outline-none"
+                        className="p-3 w-full sm:w-1/2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 outline-none"
                         required
                       />
                       <input
                         name="email"
                         placeholder="Your email"
                         type="email"
-                        className="p-3 w-[60%] rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 outline-none"
+                        className="p-3 w-full sm:w-1/2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 outline-none"
                         required
                       />
                     </div>
-                    <div>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        type="submit"
-                        className="mt-2 cursor-pointer w-full bg-blue-300 text-gray-800 px-5 py-3 rounded-lg font-semibold hover:bg-blue-700 transition hover:text-white"
-                      >
-                        Book Now
-                      </motion.button>
-                    </div>
+
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`mt-2 cursor-pointer w-full bg-blue-300 text-gray-800 px-5 py-3 rounded-lg font-semibold hover:bg-blue-700 transition hover:text-white ${
+                        isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+                      }`}
+                    >
+                      {isSubmitting ? "Booking...." : "Book Now"}
+                    </motion.button>
                   </form>
                 </motion.div>
               </div>

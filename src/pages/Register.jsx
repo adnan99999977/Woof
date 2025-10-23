@@ -1,55 +1,95 @@
 import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { AuthContext } from "../context/Authcontext/AuthContext";
 import { useLocation, useNavigate } from "react-router";
-import { FiEye } from "react-icons/fi";
-import { FiEyeOff } from "react-icons/fi";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import toast from "react-hot-toast";
+import { AuthContext } from "../context/authcontext/AuthContext";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [pass, setPass] = useState(false);
-
-  const showpass = () => {
-    setPass(!pass);
-  };
+  const [passVisible, setPassVisible] = useState(false);
+  const showPass = () => setPassVisible(!passVisible);
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const photoURL = e.target.photoURL.value;
-    const password = e.target.password.value;
 
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value;
+    const photoURL = e.target.photoURL.value.trim();
+
+    // Validation
+    if (!name || !email || !password) {
+      toast.error("Please fill all required fields!");
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Invalid email address!");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long!");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least 1 uppercase letter!");
+      return;
+    }
+
+    if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least 1 lowercase letter!");
+      return;
+    }
+
+    // Register user
     registerUser(email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("Registered User:", user);
+        toast.success("Registration Successful!", {
+          duration: 2000,
+          position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
+        });
         navigate(location.state || "/");
       })
       .catch((error) => {
-        console.error("Registration Error:", error);
+        toast.error(error.message);
       });
   };
 
   return (
     <>
       <Navbar />
-      <div className="w-full pt-30 pb-10 min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
-        <div className="flex w-9/12 mx-auto flex-1 items-center justify-center px-4">
+      <div className="lg:w-full pt-30 pb-10 min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
+        <div className="flex w-10/12 lg:w-9/12 mx-auto flex-1 items-center justify-center lg:px-4">
           <div className="flex flex-col md:flex-row w-full max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl overflow-hidden">
             <div className="md:w-[30%] mx-auto w-full h-64 md:h-auto">
               <img
                 className="w-full h-full object-cover"
                 src="/assets/signup.png"
-                alt="Login"
+                alt="Sign Up"
               />
             </div>
 
-            <div className="md:w-[60%] w-full flex flex-col items-center justify-center py-10 px-30">
+            <div className="md:w-[60%] w-full flex flex-col items-center justify-center py-10 px-10 relative">
               <h2 className="text-5xl font-semibold mb-4 text-gray-700">
                 Welcome
               </h2>
@@ -57,21 +97,23 @@ const Register = () => {
                 Please Register to continue
               </p>
 
-              <form 
+              <form
                 onSubmit={handleRegister}
-                className="flex flex-col relative gap-4 w-full"
+                className="flex flex-col gap-4 w-full relative"
               >
                 <input
                   name="name"
                   type="text"
-                  placeholder="username"
+                  placeholder="Username"
                   className="p-3 rounded-lg border border-gray-300"
+                  required
                 />
                 <input
                   name="email"
                   type="email"
                   placeholder="Email"
                   className="p-3 rounded-lg border border-gray-300"
+                  required
                 />
                 <input
                   name="photoURL"
@@ -79,25 +121,28 @@ const Register = () => {
                   placeholder="Photo URL"
                   className="p-3 rounded-lg border border-gray-300"
                 />
-                <input
-                  name="password"
-                  type={pass ? "text" : "password"}
-                  placeholder="Password"
-                  className="p-3 rounded-lg border border-gray-300"
-                />
-                <div
-                  onClick={() => {
-                    showpass(!setPass);
-                  }}
-                  className="absolute left-78 cursor-pointer bottom-18"
-                >
-                  {pass ? <FiEye size={18} /> : <FiEyeOff size={18} />}
+                <div className="relative">
+                  <input
+                    name="password"
+                    type={passVisible ? "text" : "password"}
+                    placeholder="Password"
+                    className="p-3 rounded-lg border border-gray-300 w-full"
+                    required
+                  />
+                  <div
+                    onClick={showPass}
+                    className="absolute right-3 top-4 cursor-pointer"
+                  >
+                    {passVisible ? <FiEye size={18} /> : <FiEyeOff size={18} />}
+                  </div>
                 </div>
 
-                <button className="bg-blue-500 cursor-pointer text-white py-2 rounded-lg hover:bg-blue-600 transition">
+                <button
+                  type="submit"
+                  className="bg-blue-500 cursor-pointer text-white py-2 rounded-lg hover:bg-blue-600 transition"
+                >
                   Register
                 </button>
-               
               </form>
             </div>
           </div>

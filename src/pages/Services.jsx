@@ -19,7 +19,7 @@ const Services = () => {
       <p className="text-4xl font-bold text-center w-9/12 mx-auto border-b border-gray-300 pb-10">
         Our All Services
       </p>
-      <div className="grid grid-cols-3 py-10 px-20">
+      <div className="grid grid-cols-1 lg:grid-cols-3 py-10 px-5 lg:px-20">
         {sharedData.map((item) => (
           <ServiceCard key={item.category} item={item} />
         ))}

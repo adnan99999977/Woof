@@ -1,31 +1,56 @@
 import { Link, useLocation, useNavigate } from "react-router";
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../context/Authcontext/AuthContext";
+import { AuthContext } from "../context/authcontext/AuthContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { GoogleAuthProvider } from "firebase/auth";
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const LogIn = () => {
   const { loginUser, loginViaGoogle, resetPassword } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [pass, setPass] = useState(false);
-  const [email,setEmail] = useState('')
+  const [email, setEmail] = useState("");
 
   const showpass = () => {
     setPass(!pass);
   };
-
   const handlegoole = () => {
     const provider = new GoogleAuthProvider();
+
     loginViaGoogle(provider)
-      .then((result) => {
+      .then(() => {
+        toast.success("Logged In Successfully!", {
+          duration: 2000,
+          position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "20px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
+        });
         const user = result.user;
         navigate(location.state?.from || "/");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        toast.error("Login Failed! " + error.message, {
+          duration: 4000,
+          position: "bottom-center",
+          style: { background: "#f87171", color: "#fff" },
+         
+        });
+      });
   };
 
   const handleLogin = (e) => {
@@ -34,21 +59,55 @@ const LogIn = () => {
     const password = e.target.password.value;
     loginUser(email, password)
       .then((userCredential) => {
+        toast.success("Logged In Successfully!", {
+          duration: 2000,
+          position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "20px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
+        });
         navigate(location.state || "/");
         const user = userCredential.user;
         console.log("Logged in user:", user);
       })
       .catch((error) => {
         console.error("Login error:", error);
+        toast.error(" Action Failed!", {
+          duration: 3000,
+          position: "top-center",
+          style: {
+            background: "#ef4444",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
+        });
       });
   };
 
   return (
     <>
       <Navbar />
-      <div className="w-full pt-30 pb-10 min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
-        <div className="flex w-9/12 mx-auto flex-1 items-center justify-center px-4 ">
-          <div className="flex flex-col md:flex-row w-full max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl py-5 overflow-hidden">
+      <div className="w-full pt-30 pb-10  lg:min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
+        <div className="flex lg:w-9/12 mx-auto flex-1 items-center justify-center lg:px-4 ">
+          <div className="flex flex-col md:flex-row  lg:max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl py-5 overflow-hidden">
             <div className="md:w-[40%] mx-auto w-full h-50 md:h-[40%]">
               <img
                 className="w-full h-full object-cover"
@@ -57,8 +116,8 @@ const LogIn = () => {
               />
             </div>
 
-            <div className="md:w-[30%] mx-auto  w-full flex flex-col items-center justify-center ">
-              <h2 className="text-5xl font-semibold mb-4 text-gray-700">
+            <div className="  mx-auto w-[70%] lg:w-[35%] flex flex-col items-center justify-center ">
+              <h2 className="text-5xl font-semibold my-4 lg:my-1 mb-4 text-gray-700">
                 Welcome
               </h2>
               <p className="text-gray-600 mb-6 text-center">
@@ -73,7 +132,9 @@ const LogIn = () => {
                   <input
                     name="email"
                     value={email}
-                    onChange={(e)=>{setEmail(e.target.value)}}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                     type="email"
                     placeholder="Email"
                     className="p-2 rounded-lg border border-gray-300"
@@ -88,7 +149,7 @@ const LogIn = () => {
                     onClick={() => {
                       showpass(!setPass);
                     }}
-                    className="absolute left-66 cursor-pointer bottom-26"
+                    className="absolute lg:left-78 left-[87%] cursor-pointer bottom-26"
                   >
                     {pass ? <FiEye /> : <FiEyeOff />}
                   </div>
@@ -96,7 +157,7 @@ const LogIn = () => {
                   <div className="flex items-center justify-end">
                     <Link
                       to="/forgatepasword"
-                      state={{email}}
+                      state={{ email }}
                       className="text-end text-sm hover:font-bold hover:underline cursor-pointer"
                     >
                       Forgot Password?

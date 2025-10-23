@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -33,11 +32,6 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const resetPassword = (password)=>{
-    setLoading(true)
-    return sendPasswordResetEmail(auth,password)
-  }
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser || null);
@@ -54,8 +48,6 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     loginViaGoogle,
-    resetPassword
-    
   };
 
   return (

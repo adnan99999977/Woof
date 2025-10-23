@@ -21,7 +21,7 @@ const StackedCards = () => {
   };
 
   return (
-    <div className="w-8/12 mx-auto  gap-30 py-10 mt-20 flex justify-center items-center ">
+    <div className="w-8/12 mx-auto hidden   gap-30 py-10 mt-20 lg:flex justify-center items-center ">
       <div className="text-center w-[70%] mb-10 space-y-">
         <h2 className="text-6xl font-bold text-gray-800 mb-2">Top Highlights</h2>
         <p className="text-gray-600 text-xl mb-14 mt-8 ">

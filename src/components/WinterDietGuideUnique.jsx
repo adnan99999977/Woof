@@ -43,7 +43,7 @@ const WinterDietGuideUnique = () => {
         Winter Diet Guide for Pets
       </h2>
 
-      <div className="flex flex-col gap-16 max-w-6xl mx-auto">
+      <div className="flex flex-col gap-16 w-[80%] lg:max-w-6xl mx-auto">
         {dietTips.map((tip, index) => (
           <motion.div
             key={tip.id}
