@@ -1,16 +1,29 @@
-# React + Vite
+# WarmPaws - Pet Care in Winter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Purpose
+WarmPaws-Luxe Edition is a web application designed for pet owners to ensure the well-being of their furry friends during winter.  
+Users can explore local pet care services, winter clothing for pets, grooming options, and expert tips—all in one convenient platform.
 
-Currently, two official plugins are available:
+## Key Features
+- **User Authentication:** Email/password and Google login/register functionality.  
+- **Responsive Design:** Fully optimized for mobile and desktop devices.  
+- **Animated UI:** Smooth animations using Framer Motion and Animate.css.  
+- **Pet Care Services:** Access local services and winter care guides for pets.  
+- **Interactive Components:** Card sliders, hover effects, and transitions powered by Swiper and React-Spring.  
+- **Real-time Feedback:** Toast notifications via React-Hot-Toast for login/logout and form actions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## NPM Packages Used
+- react  
+- react-dom  
+- react-router  
+- firebase  
+- framer-motion  
+- react-hot-toast  
+- react-icons  
+- swiper  
+- tailwindcss  
+- daisyui  
+- aos  
+- animate.css  
+- @react-spring/web  
+- @tailwindcss/vite  
