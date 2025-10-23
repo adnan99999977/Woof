@@ -1,17 +1,26 @@
-import React from "react";
-import { Link } from "react-router";
-import { IoIosArrowDropleft } from "react-icons/io";
+import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { AuthContext } from "../context/Authcontext/AuthContext";
 
 const Register = () => {
+  const { registerUser } = useContext(AuthContext);
+  
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photoURL = e.target.photoURL.value;
     const password = e.target.password.value;
-    console.log({ name, email, photoURL, password });
+    registerUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Registered User:", user);
+      })
+      .catch((error) => {
+        console.error("Registration Error:", error);
+      });
   };
 
   return (
@@ -20,7 +29,6 @@ const Register = () => {
       <div className="w-full pt-30 pb-10  min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
         <div className="flex w-9/12 mx-auto flex-1 items-center justify-center px-4 ">
           <div className="flex flex-col md:flex-row w-full max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl overflow-hidden">
-
             <div className="md:w-[30%] mx-auto w-full h-64 md:h-auto">
               <img
                 className="w-full h-full object-cover"

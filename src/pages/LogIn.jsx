@@ -1,15 +1,26 @@
 import { Link } from "react-router";
-import { IoIosArrowDropleft } from "react-icons/io";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/Authcontext/AuthContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 
 const LogIn = () => {
    
+  const {loginUser} = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Logged in user:", user);
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+      });
   };
 
   return (
