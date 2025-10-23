@@ -5,11 +5,14 @@ const LogIn = () => {
   return (
     <div className="w-full  min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
       <div className="flex relative flex-1 items-center justify-center px-4 ">
-         <Link to={'/'} className="absolute z-2 left-30 top-8 cursor-pointer hover:scale-120 animate-pulse transition-all duration-200" >
-                  <IoIosArrowDropleft size={40}  color="blue"/>
-                </Link>
+        <Link
+          to={"/"}
+          className="absolute z-2 left-30 top-8 cursor-pointer hover:scale-120 animate-pulse transition-all duration-200"
+        >
+          <IoIosArrowDropleft size={40} color="blue" />
+        </Link>
         <div className="flex flex-col md:flex-row w-full max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl overflow-hidden">
-          {/* Image */}
+    
           <div className="md:w-1/2 w-full h-64 md:h-auto">
             <img
               className="w-full h-full object-cover"
@@ -18,7 +21,7 @@ const LogIn = () => {
             />
           </div>
 
-          {/* Text / Form */}
+       
           <div className="md:w-1/2 w-full flex flex-col items-center justify-center px-30">
             <h2 className="text-5xl font-semibold mb-4 text-gray-700">
               Welcome Back
@@ -27,16 +30,16 @@ const LogIn = () => {
               Please log in to continue to your account
             </p>
 
-            {/* Example placeholder for form */}
+        
             <div className="flex flex-col gap-4 w-full">
               <input
-              name="email"
+                name="email"
                 type="email"
                 placeholder="Email"
                 className="p-3 rounded-lg border border-gray-300"
               />
               <input
-              name="password"
+                name="password"
                 type="password"
                 placeholder="Password"
                 className="p-3 rounded-lg border border-gray-300"
@@ -84,7 +87,14 @@ const LogIn = () => {
                 </svg>
                 Login with Google
               </button>
-              <div className="flex items-center justify-center"><Link to={'/register'}>Are you a new user? <span className="font-semibold hover:underline cursor-pointer">Register </span></Link></div>
+              <div className="flex items-center justify-center">
+                <Link to={"/register"}>
+                  Are you a new user?{" "}
+                  <span className="font-semibold hover:underline cursor-pointer">
+                    Register{" "}
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

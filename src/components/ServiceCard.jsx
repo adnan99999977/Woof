@@ -12,13 +12,10 @@ const ServiceCard = ({ item }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       whileHover={{ scale: 1.05 }}
-
     >
       <div className="relative backdrop-blur-md bg-white/30 border border-white/40 shadow-lg rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-    
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 rounded-3xl"></div>
 
-        
         <figure className="overflow-hidden">
           <motion.img
             src={image}
@@ -29,7 +26,6 @@ const ServiceCard = ({ item }) => {
           />
         </figure>
 
-     
         <div className="absolute bottom-0 left-0 right-0 z-20 p-5 text-white">
           <h2 className="text-xl font-semibold mb-2 drop-shadow-md">
             {serviceName}

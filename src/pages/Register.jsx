@@ -6,11 +6,14 @@ const Register = () => {
   return (
     <div className="w-full   min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
       <div className="flex flex-1 relative items-center justify-center px-4 ">
-        <Link to={'/'} className="absolute z-2 left-30 top-8 cursor-pointer animate-pulse transition-all duration-200 hover:scale-120" >
-          <IoIosArrowDropleft size={40}  color="blue"/>
+        <Link
+          to={"/"}
+          className="absolute z-2 left-30 top-8 cursor-pointer animate-pulse transition-all duration-200 hover:scale-120"
+        >
+          <IoIosArrowDropleft size={40} color="blue" />
         </Link>
         <div className="flex flex-col md:flex-row w-full max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl overflow-hidden">
-          {/* Image */}
+       
           <div className="md:w-1/2 w-full h-64 md:h-auto">
             <img
               className="w-full h-full object-cover"
@@ -19,7 +22,7 @@ const Register = () => {
             />
           </div>
 
-          {/* Text / Form */}
+        
           <div className="md:w-1/2 w-full flex flex-col items-center justify-center px-30">
             <h2 className="text-5xl font-semibold mb-4 text-gray-700">
               Welcome
@@ -28,7 +31,7 @@ const Register = () => {
               Please Register to continue
             </p>
 
-            {/* Example placeholder for form */}
+            
             <div className="flex flex-col gap-4 w-full">
               <input
                 name="name"

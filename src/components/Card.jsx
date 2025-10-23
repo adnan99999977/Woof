@@ -8,7 +8,7 @@ const Card = ({ service }) => {
     <motion.div
       className="p-3"
       data-aos="fade-up"
-      data-aos-delay="100" 
+      data-aos-delay="100"
       data-aos-offset="200"
     >
       <div className="card shadow-lg rounded-2xl border border-blue-100 overflow-hidden">
@@ -25,7 +25,9 @@ const Card = ({ service }) => {
           <h2 className="card-title text-lg text-[#383634]">{serviceName}</h2>
 
           <div className="flex items-center justify-center gap-4">
-            <p className="text-yellow-500 font-semibold">{rating} <span className="text-xl">★</span></p>
+            <p className="text-yellow-500 font-semibold">
+              {rating} <span className="text-xl">★</span>
+            </p>
             <p className="text-gray-600 font-semibold">${price}</p>
           </div>
 
