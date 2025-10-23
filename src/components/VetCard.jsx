@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import WinterDietGuideUnique from "./WinterDietGuideUnique";
+import WinterCards from "./WinterCards";
 
 
 const vets = [
@@ -59,7 +60,12 @@ const ExpertVets = () => {
           <VetCard key={vet.id} vet={vet} />
         ))}
       </div>
-      <WinterDietGuideUnique/>
+      <div className="mt-10 ">
+        <WinterCards/>
+      </div>
+      <div className="">
+        <WinterDietGuideUnique/>
+      </div>
     </div>
   );
 };

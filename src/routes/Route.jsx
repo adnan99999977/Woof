@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage";
 import ServicesDetails from "../pages/ServicesDetails";
 import PrivetRoute from "./PrivetRoute";
 import Profile from "../pages/Profile";
+import ForgatePasword from "../pages/ForgatePasword";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       </PrivetRoute>
     ),
   },
+  {
+    path:'forgatepasword',
+    element:<ForgatePasword/>
+  }
 ]);
 
 export default router;

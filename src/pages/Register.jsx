@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { AuthContext } from "../context/Authcontext/AuthContext";
 import { useLocation, useNavigate } from "react-router";
+import { FiEye } from "react-icons/fi";
+import { FiEyeOff } from "react-icons/fi";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
+  const [pass, setPass] = useState(false);
+
+  const showpass = () => {
+    setPass(!pass);
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -22,7 +29,6 @@ const Register = () => {
         const user = userCredential.user;
         console.log("Registered User:", user);
         navigate(location.state || "/");
-       
       })
       .catch((error) => {
         console.error("Registration Error:", error);
@@ -43,7 +49,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="md:w-[50%] w-full flex flex-col items-center justify-center py-10 px-30">
+            <div className="md:w-[60%] w-full flex flex-col items-center justify-center py-10 px-30">
               <h2 className="text-5xl font-semibold mb-4 text-gray-700">
                 Welcome
               </h2>
@@ -51,9 +57,9 @@ const Register = () => {
                 Please Register to continue
               </p>
 
-              <form
+              <form 
                 onSubmit={handleRegister}
-                className="flex flex-col gap-4 w-full"
+                className="flex flex-col relative gap-4 w-full"
               >
                 <input
                   name="name"
@@ -75,14 +81,23 @@ const Register = () => {
                 />
                 <input
                   name="password"
-                  type="password"
+                  type={pass ? "text" : "password"}
                   placeholder="Password"
                   className="p-3 rounded-lg border border-gray-300"
                 />
+                <div
+                  onClick={() => {
+                    showpass(!setPass);
+                  }}
+                  className="absolute left-78 cursor-pointer bottom-18"
+                >
+                  {pass ? <FiEye size={18} /> : <FiEyeOff size={18} />}
+                </div>
 
-                <button className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+                <button className="bg-blue-500 cursor-pointer text-white py-2 rounded-lg hover:bg-blue-600 transition">
                   Register
                 </button>
+               
               </form>
             </div>
           </div>

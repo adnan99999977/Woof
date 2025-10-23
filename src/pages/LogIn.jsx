@@ -1,15 +1,32 @@
 import { Link, useLocation, useNavigate } from "react-router";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/Authcontext/AuthContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+import { GoogleAuthProvider } from "firebase/auth";
+import { FiEye } from "react-icons/fi";
+import { FiEyeOff } from "react-icons/fi";
 
 const LogIn = () => {
-   
-  const {loginUser} = useContext(AuthContext);
-  const location = useLocation()
-  const navigate = useNavigate()
+  const { loginUser, loginViaGoogle, resetPassword } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [pass, setPass] = useState(false);
+  const [email,setEmail] = useState('')
+
+  const showpass = () => {
+    setPass(!pass);
+  };
+
+  const handlegoole = () => {
+    const provider = new GoogleAuthProvider();
+    loginViaGoogle(provider)
+      .then((result) => {
+        const user = result.user;
+        navigate(location.state?.from || "/");
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,7 +34,7 @@ const LogIn = () => {
     const password = e.target.password.value;
     loginUser(email, password)
       .then((userCredential) => {
-        navigate(location.state || '/' )
+        navigate(location.state || "/");
         const user = userCredential.user;
         console.log("Logged in user:", user);
       })
@@ -51,24 +68,39 @@ const LogIn = () => {
               <div className="flex flex-col gap-4 w-full">
                 <form
                   onSubmit={handleLogin}
-                  className="flex flex-col gap-4 w-full"
+                  className="flex flex-col relative gap-4 w-full"
                 >
                   <input
                     name="email"
+                    value={email}
+                    onChange={(e)=>{setEmail(e.target.value)}}
                     type="email"
                     placeholder="Email"
                     className="p-2 rounded-lg border border-gray-300"
                   />
                   <input
                     name="password"
-                    type="password"
-                    placeholder="Password"
+                    type={pass ? "text" : "password"}
+                    placeholder="password"
                     className="p-2 rounded-lg border border-gray-300"
                   />
+                  <div
+                    onClick={() => {
+                      showpass(!setPass);
+                    }}
+                    className="absolute left-66 cursor-pointer bottom-26"
+                  >
+                    {pass ? <FiEye /> : <FiEyeOff />}
+                  </div>
+
                   <div className="flex items-center justify-end">
-                    <p className="text-end text-sm hover:font-bold hover:underline cursor-pointer">
-                      Forgot Password?{" "}
-                    </p>
+                    <Link
+                      to="/forgatepasword"
+                      state={{email}}
+                      className="text-end text-sm hover:font-bold hover:underline cursor-pointer"
+                    >
+                      Forgot Password?
+                    </Link>
                   </div>
                   <button className="bg-blue-500 cursor-pointer text-white py-2 rounded-lg hover:bg-blue-600 transition">
                     Log In
@@ -81,7 +113,10 @@ const LogIn = () => {
                   <div className="flex-1 border-t border-gray-400"></div>
                 </div>
 
-                <button className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer text-black rounded-xl ">
+                <button
+                  onClick={handlegoole}
+                  className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer text-black rounded-xl "
+                >
                   <svg
                     aria-label="Google logo"
                     width="26"
