@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/Authcontext/AuthContext";
 import Navbar from "../components/Navbar";
@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 const LogIn = () => {
    
   const {loginUser} = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const LogIn = () => {
     const password = e.target.password.value;
     loginUser(email, password)
       .then((userCredential) => {
+        navigate(location.state || '/' )
         const user = userCredential.user;
         console.log("Logged in user:", user);
       })
@@ -67,7 +70,7 @@ const LogIn = () => {
                       Forgot Password?{" "}
                     </p>
                   </div>
-                  <button className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+                  <button className="bg-blue-500 cursor-pointer text-white py-2 rounded-lg hover:bg-blue-600 transition">
                     Log In
                   </button>
                 </form>

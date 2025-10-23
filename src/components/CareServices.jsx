@@ -38,7 +38,7 @@ const CareServices = () => {
     return <p className="text-center py-10 text-lg">Loading...</p>;
   }
 
-  const services = sharedData; // assuming sharedData is an array
+  const services = sharedData; 
   const displayedServices = showAll ? services : services.slice(0, 6);
 
   return (

@@ -1,49 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { AuthContext } from "./AuthContext";
 import { auth } from "../../Firebase/firebase.config";
 
 const AuthProvider = ({ children }) => {
-    const [user,setUser] = useState(null)
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // 🔹 add loading state
 
   const registerUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const loginUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const logoutUser = () =>{
-    return signOut(auth)
-  }
+  const logoutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-  
   useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    if (currentUser) {
-      setUser(currentUser);
-    } else {
-      setUser(null);  
-    }
-  });
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser || null);
+      setLoading(false); // 🔹 stop loading after checking
+    });
 
-  return () => unsubscribe();
-}, []);
-
-
+    return () => unsubscribe();
+  }, []);
 
   const authInfo = {
     user,
+    loading,
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

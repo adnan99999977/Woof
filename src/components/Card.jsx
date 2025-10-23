@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const Card = ({ service }) => {
   const { image, serviceName, rating, price } = service;
@@ -31,7 +32,7 @@ const Card = ({ service }) => {
             <p className="text-gray-600 font-semibold">${price}</p>
           </div>
 
-          <div className="card-actions justify-center mt-2">
+          <Link to={'/serviceDetails'} className="card-actions justify-center mt-2">
             <motion.button
               className="btn btn-primary bg-blue-500 hover:bg-blue-600 border-none"
               whileHover={{ scale: 1.1 }}
@@ -39,7 +40,7 @@ const Card = ({ service }) => {
             >
               View Details
             </motion.button>
-          </div>
+          </Link>
         </div>
       </div>
     </motion.div>
