@@ -14,7 +14,7 @@ const Register = () => {
           <div className="md:w-1/2 w-full h-64 md:h-auto">
             <img
               className="w-full h-full object-cover"
-              src="/assets/Signup.png"
+              src="/assets/signup.png"
               alt="Login"
             />
           </div>
