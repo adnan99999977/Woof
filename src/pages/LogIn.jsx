@@ -3,52 +3,47 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/authcontext/AuthContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { GoogleAuthProvider } from "firebase/auth";
-import { FiEye } from "react-icons/fi";
-import { FiEyeOff } from "react-icons/fi";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
 
 const LogIn = () => {
-  const { loginUser, loginViaGoogle, resetPassword } = useContext(AuthContext);
+  const { loginUser, loginViaGoogle, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [pass, setPass] = useState(false);
   const [email, setEmail] = useState("");
 
-  const showpass = () => {
-    setPass(!pass);
-  };
+  const auth = getAuth();
+
+  const showpass = () => setPass(!pass);
+
+  // Google login
   const handlegoole = () => {
     const provider = new GoogleAuthProvider();
 
     loginViaGoogle(provider)
       .then(() => {
+        const currentUser = auth.currentUser;
+        setUser({
+          ...currentUser,
+          displayName: currentUser.displayName || "User Name",
+          photoURL: currentUser.photoURL || "/assets/profile.png",
+          email: currentUser.email,
+        });
+
         toast.success("Logged In Successfully!", {
           duration: 2000,
           position: "top-center",
-          style: {
-            background: "#22c55e",
-            color: "#fff",
-            padding: "12px 20px",
-            borderRadius: "20px",
-            fontWeight: "600",
-            fontSize: "16px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          },
         });
-        const user = result.user;
+
         navigate(location.state?.from || "/");
       })
       .catch((error) => {
+        console.error(error);
         toast.error("Login Failed! " + error.message, {
           duration: 4000,
-          position: "bottom-center",
-          style: { background: "#f87171", color: "#fff" },
-         
+          position: "top-center",
         });
       });
   };
@@ -57,47 +52,27 @@ const LogIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
     loginUser(email, password)
       .then((userCredential) => {
+        const currentUser = userCredential.user;
+        setUser({
+          ...currentUser,
+          displayName: currentUser.displayName || "User Name",
+          photoURL: currentUser.photoURL || "/assets/profile.png",
+        });
+
         toast.success("Logged In Successfully!", {
           duration: 2000,
           position: "top-center",
-          style: {
-            background: "#22c55e",
-            color: "#fff",
-            padding: "12px 20px",
-            borderRadius: "20px",
-            fontWeight: "600",
-            fontSize: "16px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          },
         });
-        navigate(location.state || "/");
-        const user = userCredential.user;
-        console.log("Logged in user:", user);
+        navigate(location.state?.from || "/");
       })
       .catch((error) => {
         console.error("Login error:", error);
-        toast.error(" Action Failed!", {
+        toast.error("Action Failed! " + error.message, {
           duration: 3000,
           position: "top-center",
-          style: {
-            background: "#ef4444",
-            color: "#fff",
-            padding: "12px 20px",
-            borderRadius: "10px",
-            fontWeight: "600",
-            fontSize: "16px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          },
         });
       });
   };
@@ -105,9 +80,9 @@ const LogIn = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full pt-30 pb-10  lg:min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
+      <div className="w-full pt-30 pb-10 lg:min-h-screen bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
         <div className="flex lg:w-9/12 mx-auto flex-1 items-center justify-center lg:px-4 ">
-          <div className="flex flex-col md:flex-row  lg:max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl py-5 overflow-hidden">
+          <div className="flex flex-col md:flex-row lg:max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl py-5 overflow-hidden">
             <div className="md:w-[40%] mx-auto w-full h-50 md:h-[40%]">
               <img
                 className="w-full h-full object-cover"
@@ -116,7 +91,7 @@ const LogIn = () => {
               />
             </div>
 
-            <div className="  mx-auto w-[70%] lg:w-[35%] flex flex-col items-center justify-center ">
+            <div className="mx-auto w-[70%] lg:w-[35%] flex flex-col items-center justify-center">
               <h2 className="text-5xl font-semibold my-4 lg:my-1 mb-4 text-gray-700">
                 Welcome
               </h2>
@@ -132,9 +107,7 @@ const LogIn = () => {
                   <input
                     name="email"
                     value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     placeholder="Email"
                     className="p-2 rounded-lg border border-gray-300"
@@ -142,13 +115,11 @@ const LogIn = () => {
                   <input
                     name="password"
                     type={pass ? "text" : "password"}
-                    placeholder="password"
+                    placeholder="Password"
                     className="p-2 rounded-lg border border-gray-300"
                   />
                   <div
-                    onClick={() => {
-                      showpass(!setPass);
-                    }}
+                    onClick={showpass}
                     className="absolute lg:left-78 left-[87%] cursor-pointer bottom-26"
                   >
                     {pass ? <FiEye /> : <FiEyeOff />}
@@ -168,7 +139,7 @@ const LogIn = () => {
                   </button>
                 </form>
 
-                <div className="flex items-center justify-center gap-3  w-full">
+                <div className="flex items-center justify-center gap-3 w-full">
                   <div className="flex-1 border-t border-gray-400"></div>
                   <p className="text-gray-600 text-sm">Or</p>
                   <div className="flex-1 border-t border-gray-400"></div>
@@ -176,7 +147,7 @@ const LogIn = () => {
 
                 <button
                   onClick={handlegoole}
-                  className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer text-black rounded-xl "
+                  className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer text-black rounded-xl flex items-center justify-center gap-2"
                 >
                   <svg
                     aria-label="Google logo"
@@ -207,11 +178,12 @@ const LogIn = () => {
                   </svg>
                   Login with Google
                 </button>
+
                 <div className="flex items-center justify-center">
                   <Link to={"/register"}>
                     Are you a new user?{" "}
                     <span className="font-semibold hover:underline cursor-pointer text-blue-600">
-                      Register{" "}
+                      Register
                     </span>
                   </Link>
                 </div>

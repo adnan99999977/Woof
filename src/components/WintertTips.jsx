@@ -1,23 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 40, rotate: -2 },
-  show: { opacity: 1, y: 0, rotate: 0, transition: { type: "spring", stiffness: 300, damping: 20 } },
-  hover: { scale: 1.08, rotate: 1, y: -5, transition: { type: "spring", stiffness: 300, damping: 15 } },
-};
-
-const WinterTipsAnimated = () => {
+const WinterTips = () => {
   const [tips, setTips] = useState([]);
 
   useEffect(() => {
@@ -28,42 +12,48 @@ const WinterTipsAnimated = () => {
   }, []);
 
   return (
-    <div className="py-14 max-w-6xl mx-auto relative">
-      <h2 className="text-5xl font-extrabold text-center mb-14 text-[#1e293b]">
-        Winter Care Tips for Pets
-      </h2>
-
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6"
-        variants={container}
-        initial="hidden"
-        animate="show"
+    <div className="py-20 px-6 lg:px-10 min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-100 flex flex-col items-center">
+     
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl lg:text-6xl font-extrabold text-center text-slate-800 mb-4"
       >
-        {tips.map((tip) => (
+        Winter Care Tips for Pets
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="text-blue-700 font-medium text-center mb-12 italic"
+      >
+        Keep your furry friends warm and happy this season ❄️
+      </motion.p>
+
+      {/* Tips Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl w-full">
+        {tips.map((tip, index) => (
           <motion.div
             key={tip.id}
-            className="bg-gradient-to-b from-blue-100 via-white to-blue-50 rounded-3xl shadow-2xl p-8 text-center flex flex-col items-center relative overflow-hidden"
-            variants={cardVariant}
-            whileHover="hover"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="rounded-2xl bg-white/70 backdrop-blur-md border border-blue-100 shadow-sm p-8 text-center hover:shadow-lg transition-transform duration-300 hover:-translate-y-2"
           >
-        
-            <motion.div
-              className="absolute top-0 left-0 w-full h-full pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.15, 0], scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            />
-
-            <div className="text-6xl mb-5 animate-pulse">{tip.icon}</div>
-            <h3 className="text-2xl font-bold mb-3 text-[#1e293b]">{tip.title}</h3>
-            <p className="text-gray-700">{tip.description}</p>
-
-
+            <h3 className="text-xl font-semibold mb-3 text-slate-800">
+              {tip.title}
+            </h3>
+            <p className="text-slate-600 leading-relaxed text-base">
+              {tip.description}
+            </p>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
 
-export default WinterTipsAnimated;
+export default WinterTips;

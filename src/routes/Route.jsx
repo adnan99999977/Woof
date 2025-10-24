@@ -63,9 +63,9 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path:'forgatepasword',
-    element:<ForgatePasword/>
-  }
+    path: "forgatepasword",
+    element: <ForgatePasword />,
+  },
 ]);
 
 export default router;

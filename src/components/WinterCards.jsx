@@ -13,7 +13,6 @@ const StackedCards = () => {
   const [cards, setCards] = useState(cardData);
 
   const handleSlide = (id) => {
-    // move the first card to the end
     const updated = [...cards];
     const firstCard = updated.shift();
     updated.push(firstCard);

@@ -39,16 +39,16 @@ const Hero = () => {
           alt=""
         />
 
-        <div className=" pt-50 inset-0 flex flex-col text-center px-4">
-          <p className="text-2xl mb-4 text-gray-700 animate__animated animate__fadeInUp">
+        <div className=" pt-50 inset-0 flex flex-col text-center lg:px-4">
+          <p className="text-lg lg:text-2xl mb-4 text-gray-700 animate__animated animate__fadeInUp">
             Happy Pets, Happier You.
           </p>
           <div className="flex  items-center justify-center animate__animated animate__fadeInUp">
-            <h1 className="text-4xl md:text-7xl font-bold text-gray-700 drop-shadow-lg ">
+            <h1 className="text-3xl md:text-7xl font-bold text-gray-700 drop-shadow-lg ">
               Welcome to Woof's
             </h1>
             <img
-              className="w-30 animate__animated animate__animate__fadeInUp"
+              className=";g:w-30 w-10 animate__animated animate__animate__fadeInUp"
               src="/assets/pow.png"
               alt=""
             />
@@ -65,9 +65,7 @@ const Hero = () => {
             className="group relative bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 rounded-2xl w-72 h-44 flex flex-col justify-center items-center text-center 
     transition-all duration-500 hover:bg-white/30 hover:scale-110 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
           >
-            <div className="absolute -top-6 left-6 bg-gradient-to-r from-gray-400 to-blue-500 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-2xl"> 🧥</span>
-            </div>
+            <div className="absolute top-2 left-4 bg-gradient-to-r from-gray-500 to-blue-800 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300"></div>
             <h3 className="font-bold text-gray-900 text-2xl mb-2 drop-shadow-sm">
               Warm Jackets
             </h3>
@@ -81,9 +79,7 @@ const Hero = () => {
             className="group relative bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 rounded-2xl w-72 h-44 flex flex-col justify-center items-center text-center 
     transition-all duration-500 hover:bg-white/30 hover:scale-110 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
           >
-            <div className="absolute -top-6 left-6 bg-gradient-to-r from-pink-200 to-rose-300 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-2xl"> 🐾</span>
-            </div>
+            <div className="absolute top-2 left-4 bg-gradient-to-r from-pink-400 to-rose-300 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300"></div>
             <h3 className="font-bold text-gray-900 text-2xl mb-2 drop-shadow-sm">
               Paw Care
             </h3>
@@ -98,9 +94,7 @@ const Hero = () => {
             className="group relative bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 rounded-2xl w-72 h-44 flex flex-col justify-center items-center text-center 
     transition-all duration-500 hover:bg-white/30 hover:scale-110 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
           >
-            <div className="absolute -top-6 right-6 bg-gradient-to-r from-sky-200 to-blue-400 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-2xl"> ✂️</span>
-            </div>
+            <div className="absolute top-2 right-4 bg-gradient-to-r from-sky-300 to-blue-500 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300"></div>
             <h3 className="font-bold text-gray-900 text-2xl mb-2 drop-shadow-sm">
               Grooming
             </h3>
@@ -115,9 +109,7 @@ const Hero = () => {
             className="group relative bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-6 rounded-2xl w-72 h-44 flex flex-col justify-center items-center text-center 
     transition-all duration-500 hover:bg-white/30 hover:scale-110 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
           >
-            <div className="absolute -top-6 right-6 bg-gradient-to-r from-green-200 to-emerald-300 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-2xl"> 🏥</span>
-            </div>
+            <div className="absolute top-2 right-4 bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-full p-3 shadow-lg group-hover:rotate-12 transition-transform duration-300"></div>
             <h3 className="font-bold text-gray-900 text-2xl mb-2 drop-shadow-sm">
               Vet Support
             </h3>
@@ -127,7 +119,9 @@ const Hero = () => {
       </div>
       <div className="">
         <div className="flex px-6 lg:px-0 items-center justify-center py-7 text-4xl font-semibold flex-col gap-4 text-[#383634]">
-          <p>Keep Your Pets Warm This Winter</p>
+          <p className="w-10/12 text-center mx-auto lg:w-full mt-30 lg:mt-8 lg:text-6xl">
+            Keep Your Pets Warm This Winter
+          </p>
           <p className="animate__animated  animate__bounce animate__infinite delay-300 mt-10 ">
             <FaArrowAltCircleDown />
           </p>

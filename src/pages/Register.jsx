@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../context/authcontext/AuthContext";
 
 const Register = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, setUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -48,9 +48,9 @@ const Register = () => {
       return;
     }
 
-    // Register user
     registerUser(email, password)
-      .then((userCredential) => {
+      .then((result) => {
+        const user = result.user;
         toast.success("Registration Successful!", {
           duration: 2000,
           position: "top-center",
@@ -68,10 +68,23 @@ const Register = () => {
             gap: "8px",
           },
         });
+        updateUser({
+          displayName: name,
+          photoURL: photoURL,
+        })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photoURL });
+          })
+          .catch((error) => {
+            console.log(error);
+            setUser(user);
+          });
+        console.log(result);
         navigate(location.state || "/");
       })
       .catch((error) => {
         toast.error(error.message);
+        console.log(error);
       });
   };
 
@@ -131,7 +144,7 @@ const Register = () => {
                   />
                   <div
                     onClick={showPass}
-                    className="absolute right-3 top-4 cursor-pointer"
+                    className="absolute right-3 top-4 cursor-pointer  hover:text-blue-600 transition"
                   >
                     {passVisible ? <FiEye size={18} /> : <FiEyeOff size={18} />}
                   </div>

@@ -17,8 +17,8 @@ export default function HeroSection() {
  
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10 text-center text-white px-4 max-w-2xl">
-        <p className="uppercase tracking-widest text-sm mb-2 flex items-center justify-center gap-2">
+      <div className="relative z-10 text-center flex flex-col items-center justify-center gap-9 text-white px-4 max-w-2xl">
+        <p className="uppercase tracking-widest text-sm mb-2  flex items-center justify-center gap-2">
            Get Started
         </p>
         <h1 className="text-4xl md:text-6xl font-bold mb-4">

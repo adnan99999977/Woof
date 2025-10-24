@@ -1,24 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router";
+import toast from "react-hot-toast";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const ForgatePasword = () => {
   const location = useLocation();
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (location.state?.email) {
-      setEmail(location.state.email); 
+    if (location.state && location.state.email) {
+      setEmail(location.state.email);
     }
-  }, [location.state]);
+  }, [location]);
+
+  const handleReset = (e) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      toast.error("Please enter your email", { position: "top-center" });
+      return;
+    }
+
+    toast.success("Reset link sent successfully!", {
+      position: "top-center",
+      style: {
+        background: "#22c55e",
+        color: "#fff",
+        padding: "12px 20px",
+        borderRadius: "10px",
+        fontWeight: "600",
+        fontSize: "16px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+      },
+    });
+
+    setEmail("");
+
+    setTimeout(() => {
+      window.open("https://mail.google.com", "_blank");
+    }, 500);
+  };
 
   return (
-    <div className="bg-gradient-to-br h-screen from-blue-200 via-blue-50 to-blue-100 flex justify-center items-center">
+    <>
+    <Navbar/>
+    <div className="bg-gradient-to-br lg:h-screen mt-20 py-10 lg:py-0 from-blue-200 via-blue-50 to-blue-100 flex justify-center items-center px-7">
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl py-10 px-10 w-5/12 flex flex-col items-center justify-center gap-8 relative"
+        className="bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl py-10 px-10 lg:w-5/12 flex flex-col items-center justify-center gap-8 relative"
       >
         <img
           className="w-55 h-40"
@@ -35,7 +68,10 @@ const ForgatePasword = () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-4 w-full">
+        <form
+          onSubmit={handleReset}
+          className="flex flex-col items-center gap-4 w-full"
+        >
           <input
             type="email"
             required
@@ -49,17 +85,19 @@ const ForgatePasword = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="w-full py-3 cursor-pointer rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 text-white font-medium shadow-lg hover:brightness-105 active:brightness-95 transition-all"
-            onClick={() => window.open("https://mail.google.com", "_blank")}
+            type="submit"
           >
             Reset Password
           </motion.button>
-        </div>
+        </form>
 
         <p className="text-sm text-gray-700 mt-2 text-center">
           Tip: Check your inbox after submitting to reset your password.
         </p>
       </motion.div>
     </div>
+    <Footer/>
+  </>
   );
 };
 

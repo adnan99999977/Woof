@@ -49,7 +49,7 @@ const CareServices = () => {
       </h2>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 lg:px-20"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 gap-8 px-8 lg:px-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

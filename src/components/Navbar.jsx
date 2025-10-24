@@ -35,15 +35,15 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="navbar mb-15  w-full flex items-center justify-between px-5 lg:px-9 lg:py-3 bg-white/50 backdrop-blur-sm shadow-md fixed top-0  z-50
+        className="navbar mb-15 mx-auto mt-4 lg:mt-0 rounded-2xl lg:rounded-none lg:w-full flex items-center justify-between lg:px-9 lg:py-3 bg-white/50 backdrop-blur-sm shadow-md fixed top-0  z-50
 "
       >
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost p-0 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -59,7 +59,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-md dropdown-content bg-base-100 rounded-box z-1 mt-3 w-58 shadow"
             >
               <li>
                 <NavLink className="hover:text-blue-900" to="/">
@@ -104,18 +104,34 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div>
+          <div className="flex flex-row-reverse gap-2 items-center justify-center">
+            {user ? (
+              <Link
+                to={"/profile"}
+                className="w-13 h-13 rounded-full overflow-hidden border-2 border-gray-500 shadow-md hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                <img
+                  src={user? user.photoURL : "/assets/profile.png"}
+                  title={user? user.displayName : "Guest User"}
+                   alt=""
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            ) : (
+              ""
+            )}
+
             <p>
               {user ? (
                 <a
-                  className="px-4 lg:px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer"
+                  className="px-4 lg:px-8 py-2 bg-[#cdedfa] border border-gray-400 text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer"
                   onClick={handleLogout}
                 >
                   Log Out
                 </a>
               ) : (
                 <Link
-                  className="px-4 lg:px-8 py-2 bg-[#cdedfa] outline text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer"
+                  className="px-4 lg:px-8 py-2 bg-[#cdedfa] border border-gray-400 text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer"
                   to={"/login"}
                 >
                   Log In

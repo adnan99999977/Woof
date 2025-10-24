@@ -51,7 +51,7 @@ const VetCard = ({ vet }) => (
 const ExpertVets = () => {
   return (
     <div className="py-14 max-w-6xl mx-auto">
-      <h2 className="text-5xl font-extrabold text-center mb-12 text-[#1e293b]">
+      <h2 className="lg:text-5xl text-3xl w-10/12 mx-auto font-extrabold text-center mb-12 text-[#1e293b]">
         Meet Our Expert Vets
       </h2>
 

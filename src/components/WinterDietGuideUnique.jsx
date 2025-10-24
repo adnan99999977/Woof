@@ -7,7 +7,7 @@ const dietTips = [
     title: "High-Protein Meals",
     description:
       "Provide warm, high-protein meals to help your pets maintain energy during cold weather.",
-    icon: "🥩",
+    icon: "🥙",
     color: "from-red-200 to-blue-300",
   },
   {
@@ -23,7 +23,7 @@ const dietTips = [
     title: "Seasonal Vegetables",
     description:
       "Include winter vegetables like pumpkin or carrots for vitamins and fiber.",
-    icon: "🥕",
+    icon: "🥬",
     color: "from-green-200 to-yellow-300",
   },
   {
@@ -31,7 +31,7 @@ const dietTips = [
     title: "Healthy Treats",
     description:
       "Give treats rich in omega-3 fatty acids to support skin and coat health.",
-    icon: "🍖",
+    icon: "🥩",
     color: "from-yellow-200 to-orange-300",
   },
 ];
