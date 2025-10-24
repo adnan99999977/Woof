@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="navbar mb-15 mx-auto mt-4 lg:mt-0 rounded-2xl lg:rounded-none lg:w-full flex items-center justify-between lg:px-9 lg:py-3 bg-white/50 backdrop-blur-sm shadow-md fixed top-0  z-50
+        className="navbar mb-15 mx-auto mt-4 lg:mt-0 rounded-2xl lg:rounded-none lg:w-full flex items-center justify-between lg:px-9 bg-white/50 backdrop-blur-sm shadow-md fixed top-0  z-50
 "
       >
         <div className="navbar-start">

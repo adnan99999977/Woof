@@ -10,7 +10,7 @@ const HeroSlider = () => {
     {
       id: 1,
       image:
-        "https://i.ibb.co.com/S4XKYT78/photo-1728661631084-5f44797184e3.jpg",
+        "https://wallpapercave.com/wp/wp9015734.jpg",
       title: "Keep Your Pet Warm This Winter",
       desc: "Cozy coats, warm paws, and loving care all season long.",
       btn: "Explore Services",
@@ -18,7 +18,7 @@ const HeroSlider = () => {
     {
       id: 2,
       image:
-        "https://i.ibb.co.com/jPjnyr30/premium-photo-1665952050057-49931a9c1f3b.jpg",
+        "https://wallpapercave.com/wp/wp9015508.jpg",
       title: "Cuddle Up with WarmPaws ",
       desc: "Because your furry friends deserve the best winter comfort.",
       btn: "Learn More",
@@ -26,22 +26,22 @@ const HeroSlider = () => {
     {
       id: 3,
       image:
-        "https://i.ibb.co.com/MDx7pzDc/photo-1523480717984-24cba35ae1ef.jpg",
+        "https://images.unsplash.com/photo-1719464454959-9cf304ef4774?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZyUyMGdyb29taW5nfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500https://media.gettyimages.com/id/2207471259/photo/dog-being-at-a-salon.jpg?s=612x612&w=0&k=20&c=9lR8DHFK3BbkTqXdJyajbEOXky7ht6ocz1vYhW3CRFw=",
       title: "Winter Grooming & Safety Tips ",
       desc: "Stay safe, stylish, and warm with our winter pet care experts.",
       btn: "View Tips",
     },
     {
       id: 4,
-      image: "/assets/food.jpg",
+      image: "https://images.unsplash.com/photo-1626544379375-b76b13591c46?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNhdCUyMGVhdGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500https://images.unsplash.com/photo-1610080556749-7c63c435a8cf?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGV0JTIwZWF0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
       title: "Healthy Winter Diet for Pets",
       desc: "Ensure your pets stay nourished and energetic with our seasonal diet tips.",
       btn: "View Tips",
-    }
+    },
   ];
 
   return (
-    <div className="w-full h-[85vh] md:h-[500px] relative  border-t border-b border-gray-300">
+    <div className="w-full h-[85vh] md:h-[500px] relative ">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -61,6 +61,11 @@ const HeroSlider = () => {
                 backgroundImage: slide.image ? `url(${slide.image})` : "none",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
+                width: " 100%",
+                height: "100vh",
               }}
             >
               <div className="absolute inset-0 bg-black/40" />

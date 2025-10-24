@@ -16,13 +16,14 @@ const ServiceCard = ({ item }) => {
       whileHover={{ scale: 1.03 }}
     >
       <div className="relative backdrop-blur-md bg-white/30 border border-white/70 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent z-10 "></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent z-10 ">
+        </div>
 
         <figure className="overflow-hidden">
           <motion.img
             src={image}
             alt={serviceName}
-            className="w-full h-56 object-cover rounded-3xl"
+            className="w-full h-72 object-cover rounded-3xl"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.4 }}
           />

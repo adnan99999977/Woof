@@ -8,7 +8,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
 
 const LogIn = () => {
-  const { loginUser, loginViaGoogle, setUser, user } = useContext(AuthContext);
+  const { loginUser, loginViaGoogle, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [pass, setPass] = useState(false);
@@ -173,7 +173,7 @@ const LogIn = () => {
 
                 <button
                   onClick={handlegoole}
-                  className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer text-black rounded-xl flex items-center justify-center gap-2"
+                  className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer text-black rounded-lg flex items-center justify-center gap-2"
                 >
                   <svg
                     aria-label="Google logo"

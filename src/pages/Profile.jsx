@@ -41,12 +41,11 @@ const Profile = () => {
         console.error(error);
         toast.error("Failed to update profile!");
       });
-
-  
   };
 
   return (
-    <>
+    <div >
+     
       <Navbar />
       <div className="min-h-screen mt-10 bg-gradient-to-br from-blue-100 via-blue-50 to-white flex flex-col items-center justify-center px-4 py-10">
         <motion.div
@@ -98,7 +97,6 @@ const Profile = () => {
                   className="p-3 rounded-xl border border-gray-300 w-full focus:ring-2 focus:ring-blue-400 outline-none transition"
                 />
               </div>
-             
 
               <input
                 type="text"
@@ -121,7 +119,7 @@ const Profile = () => {
         </motion.div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

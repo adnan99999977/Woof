@@ -27,9 +27,9 @@ const WinterTips = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="text-blue-700 font-medium text-center mb-12 italic"
+        className="text-gray-400 font-medium text-lg text-center mb-12 italic"
       >
-        Keep your furry friends warm and happy this season ❄️
+        Keep your furry friends warm and happy this season 
       </motion.p>
 
       {/* Tips Grid */}

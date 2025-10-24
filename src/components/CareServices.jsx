@@ -5,6 +5,7 @@ import VetCard from "./VetCard";
 import Vidio from "./Vidio";
 import { motion } from "framer-motion";
 import Loading from "./Loading";
+import CustomerTestimonialSlider from './CustomerTestimonialSlider'
 
 const containerVariants = {
   hidden: {},
@@ -43,8 +44,8 @@ const CareServices = () => {
   const displayedServices = showAll ? services : services.slice(0, 6);
 
   return (
-    <div className="py-10">
-      <h2 className="text-4xl font-bold text-center mb-12 text-[#383634]">
+    <div className="py-15">
+      <h2 className="text-4xl lg:text-6xl font-bold text-center mb-12 text-[#383634]">
         Our Care Services
       </h2>
 
@@ -73,8 +74,10 @@ const CareServices = () => {
           </motion.button>
         </div>
       )}
-
       <WinterTipsAnimated />
+       <div className="mx-20 ">
+        <CustomerTestimonialSlider/>
+      </div>
       <Vidio />
       <VetCard />
     </div>
