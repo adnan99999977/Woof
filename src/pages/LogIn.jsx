@@ -8,12 +8,11 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
 
 const LogIn = () => {
-  const { loginUser, loginViaGoogle, setUser } = useContext(AuthContext);
+  const { loginUser, loginViaGoogle, setUser, user } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [pass, setPass] = useState(false);
   const [email, setEmail] = useState("");
-
   const auth = getAuth();
 
   const showpass = () => setPass(!pass);
@@ -23,7 +22,8 @@ const LogIn = () => {
     const provider = new GoogleAuthProvider();
 
     loginViaGoogle(provider)
-      .then(() => {
+      .then((userCredential) => {
+        console.log(userCredential);
         const currentUser = auth.currentUser;
         setUser({
           ...currentUser,
@@ -37,7 +37,7 @@ const LogIn = () => {
           position: "top-center",
         });
 
-        navigate(location.state?.from || "/");
+        navigate(location.state?.pathname || "/");
       })
       .catch((error) => {
         console.error(error);
@@ -52,10 +52,36 @@ const LogIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-
     loginUser(email, password)
       .then((userCredential) => {
         const currentUser = userCredential.user;
+
+        if (!currentUser.emailVerified) {
+          toast.error("Please verify your email!", {
+            duration: 3000,
+            position: "top-center",
+            style: {
+              background: "#ef4444",
+              color: "#fff",
+              padding: "12px 20px",
+              borderRadius: "10px",
+              fontWeight: "600",
+              fontSize: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+            },
+          });
+
+          setTimeout(() => {
+            window.open("https://mail.google.com", "_blank");
+          }, 3000); 
+
+          return; 
+        }
+
         setUser({
           ...currentUser,
           displayName: currentUser.displayName || "User Name",

@@ -9,6 +9,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 const Profile = () => {
   const [fullName, setFullName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
+  const [email, setEmail] = useState("");
   const { user, setUser } = useContext(AuthContext);
 
   const memberSince = user
@@ -40,6 +41,8 @@ const Profile = () => {
         console.error(error);
         toast.error("Failed to update profile!");
       });
+
+  
   };
 
   return (
@@ -61,7 +64,7 @@ const Profile = () => {
           >
             <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-300 shadow-md mb-4">
               <img
-                src={user?.photoURL  }
+                src={user?.photoURL}
                 alt="profile"
                 className="w-full h-full object-cover"
               />
@@ -95,6 +98,7 @@ const Profile = () => {
                   className="p-3 rounded-xl border border-gray-300 w-full focus:ring-2 focus:ring-blue-400 outline-none transition"
                 />
               </div>
+             
 
               <input
                 type="text"

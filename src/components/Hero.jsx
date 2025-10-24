@@ -48,7 +48,7 @@ const Hero = () => {
               Welcome to Woof's
             </h1>
             <img
-              className=";g:w-30 w-10 animate__animated animate__animate__fadeInUp"
+              className="lg:w-30 w-10 animate__animated animate__animate__fadeInUp"
               src="/assets/pow.png"
               alt=""
             />

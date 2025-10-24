@@ -7,7 +7,8 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../context/authcontext/AuthContext";
 
 const Register = () => {
-  const { registerUser, setUser, updateUser } = useContext(AuthContext);
+  const { registerUser, setUser, updateUser, emailVerify } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,23 +52,7 @@ const Register = () => {
     registerUser(email, password)
       .then((result) => {
         const user = result.user;
-        toast.success("Registration Successful!", {
-          duration: 2000,
-          position: "top-center",
-          style: {
-            background: "#22c55e",
-            color: "#fff",
-            padding: "12px 20px",
-            borderRadius: "10px",
-            fontWeight: "600",
-            fontSize: "16px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          },
-        });
+
         updateUser({
           displayName: name,
           photoURL: photoURL,
@@ -79,8 +64,35 @@ const Register = () => {
             console.log(error);
             setUser(user);
           });
-        console.log(result);
-        navigate(location.state || "/");
+      
+      setTimeout(() => {
+           navigate(location.state || "/");
+      }, 5000);
+
+
+        emailVerify().then(() => {
+             toast.success("Registration successful! Check your email inbox to verify your account.", {
+          duration: 4000,
+          position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            textAlign:"center",
+            justifyContent: "center",
+            gap: "8px",
+          },
+        });
+        });
+        setTimeout(() => {
+         window.open("https://mail.google.com", "_blank");
+        }, 5000);
       })
       .catch((error) => {
         toast.error(error.message);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -10,27 +11,46 @@ import {
 import { AuthContext } from "./AuthContext";
 import { auth } from "../../Firebase/firebase.config";
 
-const loginViaGoogle = (provider) => {
-  return signInWithPopup(auth, provider);
-};
-
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser,] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // google
+
+  const loginViaGoogle = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
+  // create new user / register
 
   const registerUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUser = (updatedData) =>{
-   return updateProfile(auth.currentUser,updatedData)
+  // Email verification
+  
+  const emailVerify = ()=>{
+    return sendEmailVerification(auth.currentUser)
   }
+
+
+  // update profile
+
+  const updateUser = (updatedData) => {
+    setLoading(true)
+    return updateProfile(auth.currentUser, updatedData);
+  };
+
+  
+  //  login existing user
 
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  // log out user
 
   const logoutUser = () => {
     setLoading(true);
@@ -54,7 +74,8 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     loginViaGoogle,
-    updateUser
+    updateUser,
+    emailVerify
   };
 
   return (
