@@ -10,6 +10,7 @@ import ServicesDetails from "../pages/ServicesDetails";
 import PrivetRoute from "./PrivetRoute";
 import Profile from "../pages/Profile";
 import ForgatePasword from "../pages/ForgatePasword";
+import VetBooking from "../pages/VetBooking";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
     element: (
       <PrivetRoute>
         <Profile />
+      </PrivetRoute>
+    ),
+  },
+  {
+    path: "vetbooking",
+    element: (
+      <PrivetRoute>
+        <VetBooking/>
       </PrivetRoute>
     ),
   },
