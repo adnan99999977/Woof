@@ -8,7 +8,7 @@ import { AuthContext } from "../context/authcontext/AuthContext";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
-  const { registerUser, setUser, updateUser, emailVerify, loginViaGoogle } =
+  const { registerUser, setUser,setLoading,updateUser, emailVerify, loginViaGoogle } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,15 +16,12 @@ const Register = () => {
   const [passVisible, setPassVisible] = useState(false);
   const showPass = () => setPassVisible(!passVisible);
 
-  // google
-
   const handlegoole = () => {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
 
     loginViaGoogle(provider)
       .then((userCredential) => {
-        console.log(userCredential);
         const currentUser = auth.currentUser;
         setUser({
           ...currentUser,
@@ -33,7 +30,7 @@ const Register = () => {
           email: currentUser.email,
         });
 
-        toast.success("Sign up via Google Successfully.", {
+        toast.success("Sign up by Google Successfully.", {
           duration: 2000,
           position: "top-center",
           style: {
@@ -51,10 +48,12 @@ const Register = () => {
             gap: "8px",
           },
         });
-        navigate(location.state?.pathname || "/");
+        setLoading(false)
+        setTimeout(() => {
+          navigate(location.state?.pathname || "/");
+        }, 2000);
       })
       .catch((error) => {
-        console.error(error);
         toast.error(error.message, {
           duration: 4000,
           position: "top-center",
@@ -88,7 +87,6 @@ const Register = () => {
     const password = e.target.password.value;
     const photoURL = e.target.photoURL.value.trim();
 
-    // Validation
     if (!name || !email || !password) {
       toast.error("Please fill all required fields!");
       return;
@@ -125,14 +123,9 @@ const Register = () => {
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photoURL });
           })
-          .catch((error) => {
-            console.log(error);
+          .catch(() => {
             setUser(user);
           });
-
-        setTimeout(() => {
-          navigate(location.state || "/");
-        }, 5000);
 
         emailVerify().then(() => {
           toast.success(
@@ -157,16 +150,17 @@ const Register = () => {
             }
           );
         });
+        setLoading(false);
         setTimeout(() => {
-          window.open("https://mail.google.com", "_blank");
-        }, 5000);
+          navigate(location.state?.pathname || "/");
+        }, 3000);
       })
       .catch((error) => {
         toast.error(error.message, {
           duration: 4000,
           position: "top-center",
           style: {
-            background: "#ef4444", // professional red tone
+            background: "#ef4444",
             color: "#ffffff",
             padding: "12px 20px",
             borderRadius: "20px",
@@ -181,7 +175,7 @@ const Register = () => {
           },
           iconTheme: {
             primary: "#ffffff",
-            secondary: "#b91c1c", // deeper red for contrast
+            secondary: "#b91c1c",
           },
         });
       });

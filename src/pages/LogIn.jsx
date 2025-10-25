@@ -50,8 +50,9 @@ const LogIn = () => {
             gap: "8px",
           },
         });
-
-        navigate(location.state?.pathname || "/");
+        setTimeout(() => {
+          navigate(location.state?.pathname || "/");
+        }, 500);
       })
       .catch((error) => {
         console.error(error);

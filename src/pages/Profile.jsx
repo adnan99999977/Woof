@@ -19,41 +19,47 @@ const Profile = () => {
       })
     : "";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!fullName && !photoURL) {
-      return toast.error("Fields cannot be empty!");
-    }
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const auth = getAuth();
-    updateProfile(auth.currentUser, {
+  if (!fullName && !photoURL) {
+    return toast.error("Fields cannot be empty!");
+  }
+
+  const auth = getAuth();
+
+  try {
+    await updateProfile(auth.currentUser, {
       displayName: fullName || auth.currentUser.displayName,
       photoURL: photoURL || auth.currentUser.photoURL,
-    }).then(() => {
-      setUser({ ...auth.currentUser });
-
-      toast.success("Profile Update Successfully.", {
-        duration: 2000,
-        position: "top-center",
-        style: {
-          background: "#22c55e",
-          color: "#fff",
-          padding: "12px 20px",
-          borderRadius: "10px",
-          fontWeight: "600",
-          fontSize: "16px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-          display: "flex",
-          alignItems: "center",
-          textAlign: "center",
-          justifyContent: "center",
-          gap: "8px",
-        },
-      });
-      setFullName("");
-      setPhotoURL("");
     });
-    toast.error(error.message, {
+
+    setUser({ ...auth.currentUser });
+
+    toast.success("Profile Updated Successfully.", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        background: "#22c55e",
+        color: "#fff",
+        padding: "12px 20px",
+        borderRadius: "10px",
+        fontWeight: "600",
+        fontSize: "16px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+        display: "flex",
+        alignItems: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        gap: "8px",
+      },
+    });
+
+    setFullName("");
+    setPhotoURL("");
+  } catch (error) {
+    console.log("Firebase update error:", error);
+    toast.error(error, { 
       duration: 4000,
       position: "top-center",
       style: {
@@ -75,7 +81,9 @@ const Profile = () => {
         secondary: "#b91c1c",
       },
     });
-  };
+  }
+};
+
 
   return (
     <div>
