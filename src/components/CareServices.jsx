@@ -5,7 +5,7 @@ import VetCard from "./VetCard";
 import Vidio from "./Vidio";
 import { motion } from "framer-motion";
 import Loading from "./Loading";
-import CustomerTestimonialSlider from './CustomerTestimonialSlider'
+import CustomerTestimonialSlider from "./CustomerTestimonialSlider";
 
 const containerVariants = {
   hidden: {},
@@ -14,7 +14,12 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeIn" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeIn" },
+  },
   hover: { scale: 1.05, boxShadow: "0px 10px 25px rgba(0,0,0,0.15)" },
 };
 
@@ -37,10 +42,10 @@ const CareServices = () => {
   }, []);
 
   if (isLoading || !sharedData) {
-    return <Loading/>
+    return <Loading />;
   }
 
-  const services = sharedData; 
+  const services = sharedData;
   const displayedServices = showAll ? services : services.slice(0, 6);
 
   return (
@@ -75,8 +80,8 @@ const CareServices = () => {
         </div>
       )}
       <WinterTipsAnimated />
-       <div className="mx-20 ">
-        <CustomerTestimonialSlider/>
+      <div className="mx-20 ">
+        <CustomerTestimonialSlider />
       </div>
       <Vidio />
       <VetCard />

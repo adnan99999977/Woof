@@ -4,7 +4,6 @@ export default function Footer() {
 
   return (
     <footer className=" dark:bg-[#2a4247] w-full ">
- 
       <div className="flex justify-center items-center py-5 lg:px-4">
         <img
           className="w-38 md:w-50 filter hue-rotate-180"
@@ -13,67 +12,98 @@ export default function Footer() {
         />
       </div>
 
-      
       <div className="mx-auto w-full max-w-screen-xl  sm:px-6 md:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-6 lg:py-8 text-center sm:text-left">
-          
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Company
             </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium space-y-3">
-              <li><a className="hover:underline cursor-pointer">About</a></li>
-              <li><a className="hover:underline cursor-pointer">Careers</a></li>
-              <li><a className="hover:underline cursor-pointer">Brand Center</a></li>
-              <li><a className="hover:underline cursor-pointer">Blog</a></li>
+              <li>
+                <a className="hover:underline cursor-pointer">About</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Careers</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Brand Center</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Blog</a>
+              </li>
             </ul>
           </div>
 
-          
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Help center
             </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium space-y-3">
-              <li><a className="hover:underline cursor-pointer">Discord Server</a></li>
-              <li><a className="hover:underline cursor-pointer">Twitter</a></li>
-              <li><a className="hover:underline cursor-pointer">Facebook</a></li>
-              <li><a className="hover:underline cursor-pointer">Contact Us</a></li>
+              <li>
+                <a className="hover:underline cursor-pointer">Discord Server</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Twitter</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Facebook</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Contact Us</a>
+              </li>
             </ul>
           </div>
-       
-    
+
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Legal
             </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium space-y-3">
-              <li><a className="hover:underline cursor-pointer">Privacy Policy</a></li>
-              <li><a className="hover:underline cursor-pointer">Licensing</a></li>
-              <li><a className="hover:underline cursor-pointer">Terms &amp; Conditions</a></li>
+              <li>
+                <a className="hover:underline cursor-pointer">Privacy Policy</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Licensing</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">
+                  Terms &amp; Conditions
+                </a>
+              </li>
             </ul>
           </div>
 
-       
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Download
             </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium space-y-3">
-              <li><a className="hover:underline cursor-pointer">iOS</a></li>
-              <li><a className="hover:underline cursor-pointer">Android</a></li>
-              <li><a className="hover:underline cursor-pointer">Windows</a></li>
-              <li><a className="hover:underline cursor-pointer">MacOS</a></li>
+              <li>
+                <a className="hover:underline cursor-pointer">iOS</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Android</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">Windows</a>
+              </li>
+              <li>
+                <a className="hover:underline cursor-pointer">MacOS</a>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="px-4  py-6 bg-gray-100 dark:bg-[#a1a7e038] flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-300 text-center sm:text-left">
-            © {year} <a className="hover:underline cursor-pointer">Woof's™</a>. All Rights Reserved.
+            © {year} <a className="hover:underline cursor-pointer">Woof's™</a>.
+            All Rights Reserved.
           </span>
 
-          <div className="flex justify-center sm:justify-end space-x-5" aria-label="Social links">
+          <div
+            className="flex justify-center sm:justify-end space-x-5"
+            aria-label="Social links"
+          >
             {/* Facebook */}
             <Link
               to={"https://www.facebook.com/naif.adnan.90"}

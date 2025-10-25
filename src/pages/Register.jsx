@@ -259,7 +259,7 @@ const Register = () => {
 
               <button
                 onClick={handlegoole}
-                className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer mt-3 px-10 lg:px-24 text-black rounded-lg flex items-center justify-center gap-2"
+                className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer mt-3 px-7 lg:px-24 text-black rounded-lg flex items-center justify-center gap-2"
               >
                 <svg
                   aria-label="Google logo"

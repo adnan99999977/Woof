@@ -13,7 +13,7 @@ const Navbar = () => {
           duration: 2500,
           position: "top-center",
           style: {
-            background: "#3b82f6", 
+            background: "#3b82f6",
             color: "#ffffff",
             padding: "12px 20px",
             borderRadius: "20px",

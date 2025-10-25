@@ -29,16 +29,15 @@ const vets = [
 
 const ExpertVets = () => {
   return (
-    <div className="lg:py-14 py-13 pt-8 mt-30 lg:max-w-6xl mx-auto px-6 bg-gray-50 rounded-3xl shadow-lg">
-      {/* Section heading */}
+    <div className="lg:py-14 py-13 pt-8 mt-30 lg:w-[1100px] mx-auto px-10  backdrop-blur-md shadow-2xl bg-transparent rounded-2xl">
       <h2 className="lg:text-5xl text-3xl font-extrabold text-center mb-4 text-gray-900">
         Meet Our Expert Vets
       </h2>
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-        Our team of experienced veterinarians provides professional care for all types of pets. Check their expertise and book an appointment today.
+        Our team of experienced veterinarians provides professional care for all
+        types of pets. Check their expertise and book an appointment today.
       </p>
 
-      {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
         {vets.map((vet) => (
           <motion.div
@@ -62,20 +61,36 @@ const ExpertVets = () => {
         ))}
       </div>
 
-      {/* Section level View Details button */}
       <div className="text-center">
         <Link to="/vetbooking">
           <motion.div
             className="inline-block bg-blue-500/90 hover:bg-blue-600 text-white cursor-pointer font-medium py-3 px-6 rounded-lg backdrop-blur-sm"
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 200, damping: 10 }}
+            animate={{
+              scale: [1, 1.05, 1],
+              rotate: [0, 2, -2, 0],
+              boxShadow: [
+                "0px 0px 10px rgba(59, 130, 246, 0.4)",
+                "0px 0px 20px rgba(59, 130, 246, 0.6)",
+                "0px 0px 10px rgba(59, 130, 246, 0.4)",
+              ],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+            whileHover={{
+              scale: 1.1,
+              rotate: 0,
+              boxShadow: "0 0 25px rgba(59, 130, 246, 0.8)",
+            }}
           >
             View Details
           </motion.div>
         </Link>
       </div>
 
-      {/* Additional components */}
       <div className="mt-10">
         <WinterCards />
       </div>

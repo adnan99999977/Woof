@@ -71,7 +71,7 @@ export default function App() {
           <SwiperSlide key={data.id}>
             <div className="flex flex-col items-center justify-center text-center p-4 sm:p-6 md:p-8">
               <p className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center pb-10 md:pb-16 text-gray-800">
-                Customer Review 
+                Customer Review
               </p>
               <img
                 src={data.avatar}

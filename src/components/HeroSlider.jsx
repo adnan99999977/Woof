@@ -9,16 +9,14 @@ const HeroSlider = () => {
   const slides = [
     {
       id: 1,
-      image:
-        "https://wallpapercave.com/wp/wp9015734.jpg",
+      image: "https://wallpapercave.com/wp/wp9015734.jpg",
       title: "Keep Your Pet Warm This Winter",
       desc: "Cozy coats, warm paws, and loving care all season long.",
       btn: "Explore Services",
     },
     {
       id: 2,
-      image:
-        "https://wallpapercave.com/wp/wp9015508.jpg",
+      image: "https://wallpapercave.com/wp/wp9015508.jpg",
       title: "Cuddle Up with WarmPaws ",
       desc: "Because your furry friends deserve the best winter comfort.",
       btn: "Learn More",
@@ -33,7 +31,8 @@ const HeroSlider = () => {
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1626544379375-b76b13591c46?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNhdCUyMGVhdGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500https://images.unsplash.com/photo-1610080556749-7c63c435a8cf?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGV0JTIwZWF0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
+      image:
+        "https://images.unsplash.com/photo-1626544379375-b76b13591c46?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNhdCUyMGVhdGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500https://images.unsplash.com/photo-1610080556749-7c63c435a8cf?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGV0JTIwZWF0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
       title: "Healthy Winter Diet for Pets",
       desc: "Ensure your pets stay nourished and energetic with our seasonal diet tips.",
       btn: "View Tips",

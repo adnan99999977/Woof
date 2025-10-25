@@ -8,21 +8,21 @@ import Footer from "../components/Footer";
 const ForgatePasword = () => {
   const location = useLocation();
   const [email, setEmail] = useState("");
-  
+
   useEffect(() => {
     if (location.state && location.state.email) {
       setEmail(location.state.email);
     }
   }, [location]);
-  
+
   const handleReset = (e) => {
     e.preventDefault();
-    
+
     if (!email.trim()) {
       toast.error("Please enter your email", { position: "top-center" });
       return;
     }
-    
+
     toast.success("Reset link sent successfully!", {
       position: "top-center",
       style: {
@@ -35,15 +35,14 @@ const ForgatePasword = () => {
         boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
       },
     });
-    
+
     setEmail("");
-    
+
     setTimeout(() => {
       window.open("https://mail.google.com", "_blank");
     }, 500);
   };
- 
-  
+
   return (
     <>
       <Navbar />
