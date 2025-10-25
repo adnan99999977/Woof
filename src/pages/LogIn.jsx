@@ -32,18 +32,50 @@ const LogIn = () => {
           email: currentUser.email,
         });
 
-        toast.success("Logged In Successfully!", {
+        toast.success("Logged in Successfully.", {
           duration: 2000,
           position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
         });
 
         navigate(location.state?.pathname || "/");
       })
       .catch((error) => {
         console.error(error);
-        toast.error("Login Failed! " + error.message, {
+        toast.error(error.message, {
           duration: 4000,
           position: "top-center",
+          style: {
+            background: "#ef4444", // professional red tone
+            color: "#ffffff",
+            padding: "12px 20px",
+            borderRadius: "20px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            letterSpacing: "0.3px",
+          },
+          iconTheme: {
+            primary: "#ffffff",
+            secondary: "#b91c1c",
+          },
         });
       });
   };
@@ -77,9 +109,9 @@ const LogIn = () => {
 
           setTimeout(() => {
             window.open("https://mail.google.com", "_blank");
-          }, 3000); 
+          }, 3000);
 
-          return; 
+          return;
         }
 
         setUser({
@@ -88,17 +120,49 @@ const LogIn = () => {
           photoURL: currentUser.photoURL || "/assets/profile.png",
         });
 
-        toast.success("Logged In Successfully!", {
+        toast.success("Logged in Successfully.", {
           duration: 2000,
           position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
         });
         navigate(location.state?.from || "/");
       })
       .catch((error) => {
         console.error("Login error:", error);
-        toast.error("Action Failed! " + error.message, {
-          duration: 3000,
+        toast.error(error.message, {
+          duration: 4000,
           position: "top-center",
+          style: {
+            background: "#ef4444", // professional red tone
+            color: "#ffffff",
+            padding: "12px 20px",
+            borderRadius: "20px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            letterSpacing: "0.3px",
+          },
+          iconTheme: {
+            primary: "#ffffff",
+            secondary: "#b91c1c",
+          },
         });
       });
   };

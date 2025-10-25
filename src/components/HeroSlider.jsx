@@ -41,7 +41,7 @@ const HeroSlider = () => {
   ];
 
   return (
-    <div className="w-full h-[85vh] md:h-[500px] relative ">
+    <div className="w-full h-[640px] md:h-[500px] relative ">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -56,7 +56,7 @@ const HeroSlider = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative w-full h-full flex items-center justify-center text-center bg-[#fceec8]"
+              className="relative w-full h-full  flex items-center justify-center text-center bg-[#fceec8]"
               style={{
                 backgroundImage: slide.image ? `url(${slide.image})` : "none",
                 backgroundSize: "cover",
@@ -70,7 +70,7 @@ const HeroSlider = () => {
             >
               <div className="absolute inset-0 bg-black/40" />
 
-              <div className="relative z-10 text-white px-6 md:px-12 max-w-2xl">
+              <div className="relative z-10 text-white max-w-2xl">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
                   {slide.title}
                 </h1>

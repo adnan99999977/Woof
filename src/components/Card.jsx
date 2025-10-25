@@ -17,7 +17,7 @@ const Card = ({ service }) => {
           <motion.img
             src={image}
             alt={serviceName}
-            className="w-full h-40 sm:h-48 md:h-52 lg:h-56 object-cover"
+            className="w-full h-30 sm:h-48 md:h-52 lg:h-56 object-cover"
             transition={{ duration: 0.1 }}
           />
         </figure>

@@ -3,19 +3,19 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-white dark:bg-[#2a4247] w-full">
+    <footer className=" dark:bg-[#2a4247] w-full ">
  
-      <div className="flex justify-center items-center py-5 px-4">
+      <div className="flex justify-center items-center py-5 lg:px-4">
         <img
-          className="w-38 sm:w-38 md:w-50 filter hue-rotate-180"
+          className="w-38 md:w-50 filter hue-rotate-180"
           src="/assets/lg.png"
           alt="logo"
         />
       </div>
 
       
-      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 md:px-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-6 lg:py-8 text-center sm:text-left">
+      <div className="mx-auto w-full max-w-screen-xl  sm:px-6 md:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-6 lg:py-8 text-center sm:text-left">
           
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="px-4 py-6 bg-gray-100 dark:bg-[#a1a7e038] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="px-4  py-6 bg-gray-100 dark:bg-[#a1a7e038] flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-300 text-center sm:text-left">
             © {year} <a className="hover:underline cursor-pointer">Woof's™</a>. All Rights Reserved.
           </span>

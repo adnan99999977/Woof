@@ -2,14 +2,14 @@ import React from "react";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[560px] lg:h-screen mx-auto rounded-xl lg:rounded-none w-[98%] lg:w-full flex items-center justify-center overflow-hidden">
   
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover  "
       >
         <source src="/assets/vidio.mp4" type="video/mp4" />
       </video>
@@ -17,7 +17,7 @@ export default function HeroSection() {
  
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10 text-center flex flex-col items-center justify-center gap-9 text-white px-4 max-w-2xl">
+      <div className="relative z-10  text-center flex flex-col items-center justify-center gap-9 text-white px-4 max-w-2xl">
         <p className="uppercase tracking-widest text-sm mb-2  flex items-center justify-center gap-2">
            Get Started
         </p>

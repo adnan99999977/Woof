@@ -9,7 +9,6 @@ import { getAuth, updateProfile } from "firebase/auth";
 const Profile = () => {
   const [fullName, setFullName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  const [email, setEmail] = useState("");
   const { user, setUser } = useContext(AuthContext);
 
   const memberSince = user
@@ -30,22 +29,56 @@ const Profile = () => {
     updateProfile(auth.currentUser, {
       displayName: fullName || auth.currentUser.displayName,
       photoURL: photoURL || auth.currentUser.photoURL,
-    })
-      .then(() => {
-        setUser({ ...auth.currentUser });
-        toast.success("Profile updated successfully!");
-        setFullName("");
-        setPhotoURL("");
-      })
-      .catch((error) => {
-        console.error(error);
-        toast.error("Failed to update profile!");
+    }).then(() => {
+      setUser({ ...auth.currentUser });
+
+      toast.success("Profile Update Successfully.", {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          background: "#22c55e",
+          color: "#fff",
+          padding: "12px 20px",
+          borderRadius: "10px",
+          fontWeight: "600",
+          fontSize: "16px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+          display: "flex",
+          alignItems: "center",
+          textAlign: "center",
+          justifyContent: "center",
+          gap: "8px",
+        },
       });
+      setFullName("");
+      setPhotoURL("");
+    });
+    toast.error(error.message, {
+      duration: 4000,
+      position: "top-center",
+      style: {
+        background: "#ef4444",
+        color: "#ffffff",
+        padding: "12px 20px",
+        borderRadius: "20px",
+        fontWeight: "600",
+        fontSize: "16px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "8px",
+        letterSpacing: "0.3px",
+      },
+      iconTheme: {
+        primary: "#ffffff",
+        secondary: "#b91c1c",
+      },
+    });
   };
 
   return (
-    <div >
-     
+    <div>
       <Navbar />
       <div className="min-h-screen mt-10 bg-gradient-to-br from-blue-100 via-blue-50 to-white flex flex-col items-center justify-center px-4 py-10">
         <motion.div

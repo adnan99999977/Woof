@@ -11,7 +11,7 @@ const Hero = () => {
   }, []);
   return (
     <>
-      <div className="relative  lg:h-[190vh] w-full  bg-cover bg-center ">
+      <div className="relative h-[50vh] lg:h-[190vh]  lg:w-11/12 mx-auto bg-cover bg-center ">
         <img
           data-aos="fade-up"
           src="/assets/bg.webp"
@@ -39,16 +39,16 @@ const Hero = () => {
           alt=""
         />
 
-        <div className=" pt-50 inset-0 flex flex-col text-center lg:px-4">
-          <p className="text-lg lg:text-2xl mb-4 text-gray-700 animate__animated animate__fadeInUp">
+        <div className=" pt-30 lg:pt-50 inset-0 flex flex-col  text-center lg:px-4">
+          <p className="text-lg lg:text-2xl mb-10 lg:mb-8 text-gray-700 animate__animated animate__fadeInUp">
             Happy Pets, Happier You.
           </p>
-          <div className="flex  items-center justify-center animate__animated animate__fadeInUp">
-            <h1 className="text-3xl md:text-7xl font-bold text-gray-700 drop-shadow-lg ">
+          <div className="flex  items-center w-8/12 lg:w-full mx-auto justify-center animate__animated animate__fadeInUp">
+            <h1 className="text-6xl mb-10  md:text-7xl font-bold text-gray-700 drop-shadow-lg ">
               Welcome to Woof's
             </h1>
             <img
-              className="lg:w-30 w-10 animate__animated animate__animate__fadeInUp"
+              className="lg:w-30 hidden lg:block w-10 opacity-78"
               src="/assets/pow.png"
               alt=""
             />
@@ -118,11 +118,11 @@ const Hero = () => {
         </div>
       </div>
       <div className="">
-        <div className="flex px-6 lg:px-0 items-center justify-center py-7 text-4xl font-semibold flex-col gap-4 text-[#383634]">
-          <p className="w-10/12 text-center mx-auto lg:w-full mt-30 lg:mt-8 lg:text-6xl">
+        <div className="flex px-6 pt-34 lg:5 lg:px-0 items-center justify-center py-7 text-4xl font-semibold flex-col gap-4 text-[#383634] mt-40 lg:mt-0">
+          <p className="w-10/12 hidden lg:block text-center mx-auto lg:w-full mt-30 lg:mt-8 lg:text-6xl">
             Keep Your Pets Warm This Winter
           </p>
-          <p className="animate__animated  animate__bounce animate__infinite delay-300 mt-10 ">
+          <p className="hidden lg:block animate__animated  animate__bounce animate__infinite delay-300 mt-10 ">
             <FaArrowAltCircleDown />
           </p>
         </div>

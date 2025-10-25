@@ -7,8 +7,6 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../context/authcontext/AuthContext";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-
-
 const Register = () => {
   const { registerUser, setUser, updateUser, emailVerify, loginViaGoogle } =
     useContext(AuthContext);
@@ -22,7 +20,7 @@ const Register = () => {
 
   const handlegoole = () => {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth()
+    const auth = getAuth();
 
     loginViaGoogle(provider)
       .then((userCredential) => {
@@ -35,21 +33,51 @@ const Register = () => {
           email: currentUser.email,
         });
 
-        toast.success("Sign up via Google Successfully!", {
+        toast.success("Sign up via Google Successfully.", {
           duration: 2000,
           position: "top-center",
+          style: {
+            background: "#22c55e",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+            justifyContent: "center",
+            gap: "8px",
+          },
         });
-
         navigate(location.state?.pathname || "/");
       })
       .catch((error) => {
         console.error(error);
-        toast.error("Login Failed! " + error.message, {
+        toast.error(error.message, {
           duration: 4000,
           position: "top-center",
+          style: {
+            background: "#ef4444",
+            color: "#ffffff",
+            padding: "12px 20px",
+            borderRadius: "20px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            letterSpacing: "0.3px",
+          },
+          iconTheme: {
+            primary: "#ffffff",
+            secondary: "#b91c1c",
+          },
         });
       });
-      
   };
 
   const handleRegister = (e) => {
@@ -134,8 +162,28 @@ const Register = () => {
         }, 5000);
       })
       .catch((error) => {
-        toast.error(error.message);
-        console.log(error);
+        toast.error(error.message, {
+          duration: 4000,
+          position: "top-center",
+          style: {
+            background: "#ef4444", // professional red tone
+            color: "#ffffff",
+            padding: "12px 20px",
+            borderRadius: "20px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            letterSpacing: "0.3px",
+          },
+          iconTheme: {
+            primary: "#ffffff",
+            secondary: "#b91c1c", // deeper red for contrast
+          },
+        });
       });
   };
 
@@ -209,39 +257,39 @@ const Register = () => {
                 </button>
               </form>
 
-                <button
-                  onClick={handlegoole}
-                  className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer mt-3 px-10 lg:px-24 text-black rounded-lg flex items-center justify-center gap-2" 
+              <button
+                onClick={handlegoole}
+                className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer mt-3 px-10 lg:px-24 text-black rounded-lg flex items-center justify-center gap-2"
+              >
+                <svg
+                  aria-label="Google logo"
+                  width="26"
+                  height="26"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
                 >
-                  <svg
-                    aria-label="Google logo"
-                    width="26"
-                    height="26"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                  >
-                    <g>
-                      <path d="m0 0H512V512H0" fill="#fff"></path>
-                      <path
-                        fill="#34a853"
-                        d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                      ></path>
-                      <path
-                        fill="#4285f4"
-                        d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                      ></path>
-                      <path
-                        fill="#fbbc02"
-                        d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                      ></path>
-                      <path
-                        fill="#ea4335"
-                        d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                      ></path>
-                    </g>
-                  </svg>
-                  Sign up with Google
-                </button>
+                  <g>
+                    <path d="m0 0H512V512H0" fill="#fff"></path>
+                    <path
+                      fill="#34a853"
+                      d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+                    ></path>
+                    <path
+                      fill="#4285f4"
+                      d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+                    ></path>
+                    <path
+                      fill="#fbbc02"
+                      d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+                    ></path>
+                    <path
+                      fill="#ea4335"
+                      d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+                    ></path>
+                  </g>
+                </svg>
+                Sign up with Google
+              </button>
             </div>
           </div>
         </div>
