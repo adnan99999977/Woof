@@ -191,7 +191,7 @@ const Register = () => {
     <>
       <Navbar />
       <div className="lg:w-full lg:pb-10 h-[970px] lg:pt-25 lg:h-[60%] bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100 flex flex-col">
-        <div className="flex w-10/12 lg:w-9/12 mx-auto flex-1 items-center justify-center lg:px-4">
+        <div className="flex w-11/12 lg:w-9/12 mx-auto flex-1 items-center justify-center lg:px-4">
           <div className="flex flex-col md:flex-row w-full max-w-6xl h-[70%] bg-white/30 backdrop-blur-md shadow-2xl border border-gray-300 rounded-2xl overflow-hidden">
             <div className="md:w-[30%] mx-auto w-full lg:w-[600px] h-44  md:h-auto">
               <img
@@ -259,12 +259,12 @@ const Register = () => {
 
               <button
                 onClick={handlegoole}
-                className="btn bg-white border-2 font-semibold border-blue-300 cursor-pointer mt-3 px-7 lg:px-24 text-black rounded-lg flex items-center justify-center gap-2"
+                className=" bg-white border-2 font-semibold border-blue-300 cursor-pointer mt-3 lg:w-[80%] w-full py-2   text-black rounded-lg flex items-center justify-center gap-2"
               >
                 <svg
                   aria-label="Google logo"
-                  width="26"
-                  height="26"
+                  width="22"
+                  height="22"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                 >

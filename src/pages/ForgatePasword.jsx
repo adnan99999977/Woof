@@ -45,8 +45,10 @@ const ForgatePasword = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="bg-gradient-to-br lg:h-screen mt-20 py-10 lg:py-0 from-blue-200 via-blue-50 to-blue-100 flex justify-center items-center px-7">
+     <div className="pb-10">
+       <Navbar />
+     </div>
+      <div className="bg-gradient-to-br lg:h-full py-10 lg:py-10 from-blue-200 via-blue-50 to-blue-100 flex justify-center items-center px-7">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

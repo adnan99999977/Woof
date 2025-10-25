@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const RootLayout = () => {
   return (
     <>
-      <div className="flex flex-col w-full px-3 lg:px-0 min-h-screen">
+      <div className="flex flex-col w-full  bg-gradient-to-br from-blue-200 via-blue-50 to-blue-100  px-3 lg:px-0 min-h-screen">
     
          <Navbar  />
 

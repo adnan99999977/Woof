@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="navbar mb-15 mx-auto px-5 lg:mt-0 lg:rounded-none w-[94%] lg:w-full flex items-center justify-between mr-4 lg:px-9 bg-white/50 backdrop-blur-sm shadow-md fixed top-0 z-50
+        className="navbar mb-15 mx-auto px-5 mr-0 lg:mt-0 lg:rounded-none w-[94%] lg:w-full flex items-center justify-between rounded-r-4xl lg:px-9 bg-white/50 backdrop-blur-sm shadow-md fixed top-0 z-50
 "
       >
         <div className="navbar-start">
