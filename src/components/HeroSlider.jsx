@@ -76,9 +76,7 @@ const HeroSlider = () => {
                 <p className="text-lg md:text-xl mb-6 opacity-90">
                   {slide.desc}
                 </p>
-                <button className="px-6 py-3 rounded-full bg-[#fceec8] hover:outline  text-gray-800 hover:px-8 font-semibold transition-all duration-200 shadow-lg">
-                  {slide.btn}
-                </button>
+              
               </div>
             </div>
           </SwiperSlide>

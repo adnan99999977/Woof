@@ -1,6 +1,6 @@
 import { getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { useEffect } from "react";
-import { auth } from "../Firebase/firebase.config"; // তোমার firebase config path
+import { auth } from "../Firebase/firebase.config"; 
 
 const useMobileGoogleRedirect = (setUser, navigate, location) => {
   useEffect(() => {

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 export default function HeroSection() {
   return (
@@ -27,9 +28,10 @@ export default function HeroSection() {
         <p className="text-base md:text-lg mb-6">
          Your pets bring love, joy, and comfort into your life — they deserve the best care in return. From healthy nutrition to regular checkups and lots of affection, every little effort helps them live a happier, healthier life.
         </p>
+       <Link to={'/contact-us'}>
         <button className=" text-black btn hover:px-10 font-semibold py-3 px-8 rounded-full transition">
           Contact Us
-        </button>
+        </button></Link>
       </div>
     </section>
   );

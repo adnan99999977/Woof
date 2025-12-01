@@ -11,6 +11,9 @@ import PrivetRoute from "./PrivetRoute";
 import Profile from "../pages/Profile";
 import ForgatePasword from "../pages/ForgatePasword";
 import VetBooking from "../pages/VetBooking";
+import AboutUs from "../pages/AboutUs";
+import BrandStory from "../components/BrandStory";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -29,11 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: "services",
-    element: (
-      <PrivetRoute>
-        <Services />
-      </PrivetRoute>
-    ),
+    element: <Services />,
   },
   {
     path: "servicecard",
@@ -46,6 +45,18 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "about-us",
+    element: <AboutUs />,
+  },
+  {
+    path: "brand-story",
+    element: <BrandStory />,
+  },
+  {
+    path: "contact-us",
+    element: <ContactUs />,
   },
   {
     path: "serviceDetails/:id",
@@ -67,7 +78,7 @@ const router = createBrowserRouter([
     path: "vetbooking",
     element: (
       <PrivetRoute>
-        <VetBooking/>
+        <VetBooking />
       </PrivetRoute>
     ),
   },

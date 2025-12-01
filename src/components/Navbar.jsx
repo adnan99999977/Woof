@@ -80,11 +80,35 @@ const Navbar = () => {
                   Services
                 </NavLink>
               </li>
-              <li>
+             {
+              user &&  <li>
                 <NavLink className="hover:text-blue-900" to="/profile">
                   My Profile
                 </NavLink>
               </li>
+             }
+               <li>
+              <NavLink className="hover:text-blue-900" to="/about-us">
+                About Us
+              </NavLink>
+            </li>
+              <li>
+              <NavLink className="hover:text-blue-900" to="/brand-story">
+               Brand Story
+              </NavLink>
+            </li>
+             <li>
+              <NavLink className="hover:text-blue-900" to="/contact-us">
+               Contact Us
+              </NavLink>
+            </li>
+            {
+              user && <li>
+              <NavLink className="hover:text-blue-900" to="/vetbooking">
+                Booking
+              </NavLink>
+            </li>
+            }
             </ul>
           </div>
           <img
@@ -105,11 +129,35 @@ const Navbar = () => {
                 Services
               </NavLink>
             </li>
-            <li>
+            {
+              user && <li>
               <NavLink className="hover:text-blue-900" to="/profile">
                 My Profile
               </NavLink>
             </li>
+            }
+            <li>
+              <NavLink className="hover:text-blue-900" to="/about-us">
+               About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="hover:text-blue-900" to="/brand-story">
+               Brand Story
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="hover:text-blue-900" to="/contact-us">
+               Contact Us
+              </NavLink>
+            </li>
+            {
+              user && <li>
+              <NavLink className="hover:text-blue-900" to="/vetbooking">
+                Booking
+              </NavLink>
+            </li>
+            }
           </ul>
         </div>
         <div className="navbar-end">
@@ -133,14 +181,14 @@ const Navbar = () => {
             <p>
               {user ? (
                 <a
-                  className="px-4 lg:px-8 lg:py-2 py-1 text-xs lg:text-lg bg-[#cdedfa] border border-gray-400 text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer"
+                  className="px-4 lg:px-8 lg:py-2 py-1 text-xs lg:text-lg border border-gray-400 text-white font-semibold rounded-sm hover:scale-103 transition-all duration-200 bg-blue-500 hover:bg-blue-600 hover:text-white hover:outline cursor-pointer"
                   onClick={handleLogout}
                 >
                   Log Out
                 </a>
               ) : (
                 <Link
-                  className="px-3 lg:px-8 lg:py-2 py-1 text-xs lg:text-lg bg-[#cdedfa] border border-gray-400 text-shadow-gray-600 font-semibold rounded-sm hover:scale-103 transition-all duration-200 hover:bg-yellow-50 hover:text-gray-800 hover:outline cursor-pointer"
+                  className="px-3 lg:px-8 lg:py-2 py-1 text-xs lg:text-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-sm hover:scale-103 transition-all duration-200  hover:text-white hover:outline cursor-pointer"
                   to={"/login"}
                 >
                   Log In

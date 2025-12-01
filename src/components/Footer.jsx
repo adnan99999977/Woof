@@ -3,8 +3,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className=" dark:bg-[#2a4247] w-full ">
-      <div className="flex justify-center items-center py-5 lg:px-4">
+    <footer className=" dark:bg-[#2a4247e8] w-full ">
+      <div className="flex justify-center items-center py-5 lg:px-10">
         <img
           className="w-38 md:w-50 filter hue-rotate-180"
           src="/assets/lg.png"
@@ -145,6 +145,23 @@ export default function Footer() {
                 />
               </svg>
             </Link>
+            {/* linked in  */}
+            <Link
+              to={"https://www.linkedin.com/in/naif-adnan-1baa5a333/"}
+              target="_blank"
+              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              aria-label="LinkedIn"
+            >
+              <svg
+                className="w-5 sm:w-6 h-5 sm:h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5V24H0V8zm7.5 0h4.8v2.16h.07c.67-1.27 2.3-2.61 4.73-2.61 5.06 0 6 3.34 6 7.68V24h-5v-7.68c0-1.83-.03-4.19-2.56-4.19-2.56 0-2.95 2-2.95 4.06V24h-5V8z" />
+              </svg>
+            </Link>
+            
           </div>
         </div>
       </div>
